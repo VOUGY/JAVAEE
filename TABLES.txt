@@ -5,7 +5,7 @@ ________________________
 - Name
 - Description 
 - Abbreviation
-- Situation
+- Location
 ________________________
 ________________________
 Weapons
