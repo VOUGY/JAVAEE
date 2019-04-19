@@ -1,0 +1,32 @@
+________________________
+Country		
+________________________
+- Id
+- Name
+- Description 
+- Abbreviation
+- Situation
+________________________
+________________________
+Weapons
+________________________
+-
+-
+-
+-
+-
+________________________
+
+________________________
+War
+________________________
+- Id
+- Name
+- StartDate
+- EndDate
+- Description
+________________________
+
+relation 
+Un "pays" peut participer à une guerre
+Une guerre peut avoir un ou plusieurs "pays"
