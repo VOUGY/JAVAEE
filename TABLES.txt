@@ -25,6 +25,8 @@ ________________________
 - StartDate
 - EndDate
 - Description
+- Country
+- War
 ________________________
 
 relation 

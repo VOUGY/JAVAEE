@@ -28,9 +28,9 @@ public class Country {
 	private String location;	
 	
 	// relations
-	@ManyToOne
-	@JoinColumn(name = "FK_CLIENT")
-	private Client owner;
+//	@ManyToOne
+//	@JoinColumn(name = "FK_CLIENT")
+	//private Client owner;
 
 	// id 
 	public Long getId() {
@@ -38,9 +38,7 @@ public class Country {
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	
-	
+	}	
 	public String getName() {
 		return name;
 	}
