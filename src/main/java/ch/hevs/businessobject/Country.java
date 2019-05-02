@@ -15,6 +15,8 @@ import javax.persistence.Column;
 @Table(name="Country")
 public class Country {
 
+	// table attributes
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
@@ -25,14 +27,16 @@ public class Country {
 	@Column(name="description")
 	private String description;	
 	@Column(name="location")
-	private String location;	
+	private String location;
 	
-	// relations
+	// relations NOT FINISHED YET
+	
 //	@ManyToOne
 //	@JoinColumn(name = "FK_CLIENT")
 	//private Client owner;
 
-	// id 
+	// get & set
+	
 	public Long getId() {
 		return id;
 	}
@@ -69,6 +73,7 @@ public class Country {
 	//methods
 
 	// constructors
+	
 	public Country (String name, String abbreviation, String location, String description) {
 		this.name = name;
 		this.abbreviation = abbreviation;
@@ -82,6 +87,6 @@ public class Country {
 	
 	@PostPersist
 	public void acknowledgePersist() {
-		System.out.println("account persisted!!!");
+		System.out.println("country persisted!!!");
 	}
 }

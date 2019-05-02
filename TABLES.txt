@@ -6,14 +6,16 @@ ________________________
 - Description 
 - Abbreviation
 - Location
+- Weapon
+- SizeOfArmy
 ________________________
 ________________________
 Weapons
 ________________________
--
--
--
--
+- Id
+- Name
+- Description
+- Strength --> number from 1 to 10
 -
 ________________________
 
@@ -25,8 +27,8 @@ ________________________
 - StartDate
 - EndDate
 - Description
-- Country
-- War
+- Country 1
+- Country 2
 ________________________
 
 relation 
