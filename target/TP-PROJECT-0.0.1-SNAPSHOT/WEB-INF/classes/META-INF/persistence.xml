@@ -10,11 +10,14 @@
 		
 		<class>ch.hevs.businessobject.Client</class>
 		<class>ch.hevs.businessobject.Account</class>
+		<class>ch.hevs.businessobject.Weapon</class>
+		<class>ch.hevs.businessobject.Country</class>
+		<class>ch.hevs.businessobject.War</class>
+		
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" /> 
 			<property name="dialect" value="org.hibernate.dialect.HSQLDialect"/>
-
 		</properties>
 	</persistence-unit>
 </persistence>
