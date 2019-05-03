@@ -7,7 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import java.util.List;
+
 import javax.persistence.Column;
 
 
@@ -29,12 +34,13 @@ public class Country {
 	@Column(name="location")
 	private String location;
 	
-	// relations NOT FINISHED YET
+	// relations
+	@ManyToMany (mappedBy="countries")
+	private List<Weapon> weapons;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "FK_CLIENT")
-	//private Client owner;
-
+	@OneToMany(mappedBy="countryOne")
+	private List<War> wars;
+	
 	// get & set
 	
 	public Long getId() {

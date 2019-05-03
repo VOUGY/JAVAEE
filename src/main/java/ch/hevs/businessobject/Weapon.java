@@ -1,10 +1,13 @@
 package ch.hevs.businessobject;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,9 +25,10 @@ public class Weapon {
 	@Column(name="strength")
 	private int strength;
 	
-	// relations NOT FINISHED YET
-		/*@ManyToOne(cascade = CascadeType.ALL)//@JoinColumn(name = "FK_CLIENT")
-		private List<Account> accounts; */
+	// relations
+	
+	@ManyToMany
+	private List<Country> countries; 
 	
 	// get & set
 	public Long getId() {

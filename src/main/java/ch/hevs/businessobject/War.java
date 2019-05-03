@@ -1,5 +1,6 @@
 package ch.hevs.businessobject;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,8 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PostPersist;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 @Entity
 @Table(name="War")
@@ -27,20 +29,23 @@ public class War {
 	@Column(name="name")
 	private String name;
 	@Column(name="startDate")
-	private DateTime startDate;
+	@Temporal(TemporalType.DATE)
+	private Date startDate;
 	@Column(name="endDate")
-	private DateTime endDate;
+	@Temporal(TemporalType.DATE)
+	private Date endDate;
 	@Column(name="description")
 	private String description;
-	@Column(name="countryOne")
+	
+	// relations
+	
+	@ManyToOne
 	private Country countryOne;
-	@Column(name="countryTwo")
+	
+	@ManyToOne
 	private Country countryTwo;
-	
-	// relations NOT FINISHED YET
-	/*@ManyToOne(cascade = CascadeType.ALL)//@JoinColumn(name = "FK_CLIENT")
-	private List<Account> accounts; */
-	
+
+			
 	// get & set
 	
 	public Long getId() {
@@ -57,17 +62,17 @@ public class War {
 		this.name = name;
 	}
 	
-	public DateTime getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(DateTime startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 	
-	public DateTime getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(DateTime endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 	
@@ -95,7 +100,7 @@ public class War {
 	// methods
 	
 	// constructors
-	public War(String name, DateTime startDate, DateTime endDate, String description, Country countryOne, Country countryTwo) {
+	public War(String name, Date startDate, Date endDate, String description, Country countryOne, Country countryTwo) {
 		this.name = name;
 		this.startDate = startDate;
 		this.endDate = endDate;
