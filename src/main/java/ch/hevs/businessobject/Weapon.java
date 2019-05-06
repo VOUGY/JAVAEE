@@ -5,10 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Weapon")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Weapon {
 	
 	// table attributes
@@ -21,10 +23,8 @@ public class Weapon {
 	private String description;
 	@Column(name="strength")
 	private int strength;
-	
-	// relations NOT FINISHED YET
-		/*@ManyToOne(cascade = CascadeType.ALL)//@JoinColumn(name = "FK_CLIENT")
-		private List<Account> accounts; */
+	@Column(name="quantity")
+	private int quantity;
 	
 	// get & set
 	public Long getId() {
@@ -54,13 +54,17 @@ public class Weapon {
 	public void setStrength(int strength) {
 		this.strength = strength;
 	}
-	
-	
-	// methods
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	
 	// constructor
 	public Weapon() {
-		
+		// TO DO
 	}
+	
 
 }
