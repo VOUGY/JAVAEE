@@ -1,5 +1,6 @@
 package ch.hevs.businessobject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -7,12 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-<<<<<<< HEAD
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-=======
+
 import javax.persistence.ManyToMany;
->>>>>>> 6c2598a46d04fc862621a79588bb3660b7484c03
 import javax.persistence.Table;
 
 @Entity
@@ -29,16 +28,15 @@ public class Weapon {
 	private String description;
 	@Column(name="strength")
 	private int strength;
-<<<<<<< HEAD
 	@Column(name="quantity")
 	private int quantity;
-=======
+
 	
 	// relations
 	
 	@ManyToMany
 	private List<Country> countries; 
->>>>>>> 6c2598a46d04fc862621a79588bb3660b7484c03
+
 	
 	// get & set
 	public Long getId() {
@@ -76,9 +74,16 @@ public class Weapon {
 	}
 	
 	// constructor
-	public Weapon() {
-		// TO DO
+	public Weapon(String name, String description, int strength, int quantity ) {
+		this.name = name;
+		this.description = description;
+		this.strength = strength;
+		this.quantity = quantity;
+		countries = new ArrayList<>();
+		
 	}
-	
+	public Weapon() {
+		
+	}
 
 }

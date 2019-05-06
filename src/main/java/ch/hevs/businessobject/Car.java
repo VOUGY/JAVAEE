@@ -12,27 +12,27 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
-public class Gun extends Weapon {
+public class Car extends Weapon {
 	
 	// table attributes
-	private Boolean isAutomatic;
+	private Boolean isTwoWheeled;
 	
 	// get & set	
-	public Boolean getIsAutomatic() {
-		return isAutomatic;
+	public Boolean getIsTwoWheeled() {
+		return isTwoWheeled;
 	}
 
-	public void setIsAutomatic(Boolean isAutomatic) {
-		this.isAutomatic = isAutomatic;
+	public void setIsTwoWheeled(Boolean isAutomatic) {
+		this.isTwoWheeled = isTwoWheeled;
 	}
 	// constructor
-		public Gun() {
+		public Car() {
 			
 		}
-		public Gun(String name, String description, int strength, int quantity, Boolean isAutomatic)
+		public Car(String name, String description, int strength, int quantity, Boolean isAutomatic)
 		{
 			super(name,description,strength,quantity);
-			this.isAutomatic = isAutomatic;
+			this.isTwoWheeled = isTwoWheeled;
 		}
 		
 			
