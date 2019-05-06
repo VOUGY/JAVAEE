@@ -13,6 +13,8 @@
 		<class>ch.hevs.businessobject.Weapon</class>
 		<class>ch.hevs.businessobject.Country</class>
 		<class>ch.hevs.businessobject.War</class>
+		<class>ch.hevs.businessobject.Gun</class>
+		<class>ch.hevs.businessobject.Car</class>
 		
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
