@@ -1,50 +1,55 @@
 package ch.hevs.warservice;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import ch.hevs.businessobject.Account;
-import ch.hevs.businessobject.Client;
+import ch.hevs.businessobject.War;
 import ch.hevs.businessobject.Weapon;
 
 @Stateless
 public class WarBean implements WarService {
 	
-	@PersistenceContext(name = "BankPU")
-	private EntityManager em;
-
-	public Account getAccount(String accountDescription, String lastnameOwner) {
-		Query query = em.createQuery("FROM Account a WHERE a.description=:description AND a.owner.lastname=:lastname");
-		query.setParameter("description", accountDescription);
-		query.setParameter("lastname", lastnameOwner);
+	private List<String> weaponNames;
+	private String weaponName;
+	private WarService warservice;
+	
+	 @PostConstruct
+	    public void initialize() throws NamingException {
+		 
+		 InitialContext ctx = new InitialContext();
+		warservice = (WarService) ctx.lookup("java:global/TP-PROJECT-E-0.0.1-SNAPSHOT/BankBean!ch.hevs.warservice.WarService");  
+			
+		// get weapons
+		List<Weapon> weaponList = warservice.GetWeapons();
+		this.weaponNames = new ArrayList<String>();
+		for (Weapon weapon : weaponList) {
+			this.weaponNames.add(weapon.getName());
+		}
 		
-		return (Account) query.getSingleResult();
-	}
+		// get one weapon
+		this.weaponName = warservice.GetWeapon(1).getName();
+	    	
+	    // TO DO : initialize Gun / Car classes and link them to Weapon
+		 
+	    }
 	
-	public List<Account> getAccountListFromClientLastname(String lastname) {
-		return (List<Account>) em.createQuery("SELECT c.accounts FROM Client c where c.lastname=:lastname").setParameter("lastname", lastname).getResultList();
-	}
-
-	public void transfer(Account srcAccount, Account destAccount, int amount) {
-		//CHANGEMENT DE persist en merge
-		em.merge(srcAccount);
-		em.merge(destAccount);
-		srcAccount.debit(amount);
-		destAccount.credit(amount);
-	}
-
-	public List<Client> getClients() {
-		return em.createQuery("FROM Client").getResultList();
-	}
+	@PersistenceContext(name = "WarPU")
+	private EntityManager em;
 	
-	public Client getClient(long clientid) {
-		return (Client) em.createQuery("FROM Client c where c.id=:id").setParameter("id", clientid).getSingleResult();
-	}
-
+	
+	@Resource 
+	private SessionContext ctx;
+	
 	@Override
 	public void AddWeapon(Weapon weapon) {
 		// TODO Auto-generated method stub
