@@ -25,7 +25,8 @@ public class WarBean implements WarService {
 	
 	 @PostConstruct
 	    public void initialize() throws NamingException {
-		 
+			
+		 // use JNDI to inject reference to war EJB
 		 InitialContext ctx = new InitialContext();
 		warservice = (WarService) ctx.lookup("java:global/TP-PROJECT-E-0.0.1-SNAPSHOT/BankBean!ch.hevs.warservice.WarService");  
 			
@@ -46,7 +47,7 @@ public class WarBean implements WarService {
 	@PersistenceContext(name = "WarPU")
 	private EntityManager em;
 	
-	
+	 
 	@Resource 
 	private SessionContext ctx;
 	
