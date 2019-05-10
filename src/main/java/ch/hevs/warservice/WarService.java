@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import ch.hevs.businessobject.Car;
+import ch.hevs.businessobject.Gun;
 import ch.hevs.businessobject.Weapon;
 
 @Local
@@ -18,11 +20,23 @@ public interface WarService {
 	*/
 	
 	// To do => Guillaume Vouilloz
-	void AddWeapon(Weapon weapon);
+	
+	// Add Car or Gun 
+		//void AddWeapon(Weapon weapon);
+	void AddCar(Car car);
+	void AddGun(Gun gun);
+	
+	//Delete Weapon 
 	void DeleteWeapon(long id);
+	
+	//Update Weapon
 	void EditWeapon(Weapon weapon);
+	
+	//Views 
 	List<Weapon> GetWeapons();
 	Weapon GetWeapon(long id);
+	
+	
 	// To do => GV and NS	
 	
 	/*

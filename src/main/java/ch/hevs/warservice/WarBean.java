@@ -13,6 +13,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import ch.hevs.businessobject.Car;
+import ch.hevs.businessobject.Gun;
 import ch.hevs.businessobject.War;
 import ch.hevs.businessobject.Weapon;
 
@@ -22,6 +24,8 @@ public class WarBean implements WarService {
 	private List<String> weaponNames;
 	private String weaponName;
 	private WarService warservice;
+	private List<String> destinationGunDescriptions;
+    private String destinationGunDescription;
 	
 	 @PostConstruct
 	    public void initialize() throws NamingException {
@@ -51,11 +55,7 @@ public class WarBean implements WarService {
 	@Resource 
 	private SessionContext ctx;
 	
-	@Override
-	public void AddWeapon(Weapon weapon) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
 	public void DeleteWeapon(long id) {
@@ -76,5 +76,27 @@ public class WarBean implements WarService {
 	@Override
 	public Weapon GetWeapon(long weaponId) {
 		return (Weapon) em.createQuery("FROM Weapon w where w.id =:id").setParameter("id", weaponId).getSingleResult();
+	}
+
+	@Override
+	public void AddCar(Car car) {
+			
+		
+	}
+	
+	public void AddCar() {
+		Car cartmp  = new Car();
+		cartmp.setDescription("New car");
+		cartmp.setIsTwoWheeled(false);
+		cartmp.setName("CarName");
+		cartmp.setQuantity(10);
+		cartmp.setStrength(10);		
+		
+	}
+
+	@Override
+	public void AddGun(Gun gun) {
+		// TODO Auto-generated method stub
+		
 	}
 }
