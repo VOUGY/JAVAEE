@@ -10,10 +10,8 @@
 	<ui:define name="content">
 		<h:form>
 			<h:outputLabel value="This is war!"></h:outputLabel>
-			<h:selectOneMenu
-				value="#{WarZoneBean.weaponName}">
-				<f:selectItems
-					value="#{WarZoneBean.weaponNames}" />
+			<h:selectOneMenu value="#{WarZoneBean.weaponName}">
+				<f:selectItems value="#{WarZoneBean.weaponNames}" />
 			</h:selectOneMenu>
 		</h:form>
 
