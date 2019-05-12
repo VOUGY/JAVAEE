@@ -15,7 +15,7 @@ import ch.hevs.warservice.WarService;
 import ch.hevs.weaponservice.WeaponService;
 
 /**
- * TransferBean.java
+ * WarZoneBean.java
  * 
  */
 
