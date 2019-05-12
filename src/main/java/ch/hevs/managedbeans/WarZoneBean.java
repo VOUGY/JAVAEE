@@ -8,7 +8,11 @@ import javax.faces.event.ValueChangeEvent;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import ch.hevs.businessobject.Car;
 import ch.hevs.businessobject.War;
+import ch.hevs.businessobject.Weapon;
+import ch.hevs.warservice.WarService;
+import ch.hevs.weaponservice.WeaponService;
 
 /**
  * TransferBean.java
@@ -27,22 +31,30 @@ public class WarZoneBean
     private String destinationClientName;
     private String transactionResult;
     private int transactionAmount;
-    private War war;
+  // private War war;
+    
+    private List<String> weaponNames;
+    private String weaponName;
+    private WeaponService weapon;
+    private WarService war;
+    
     
     @PostConstruct
     public void initialize() throws NamingException {
     	
     	// use JNDI to inject reference to bank EJB
     	InitialContext ctx = new InitialContext();
-		war = (War) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/BankBean!ch.hevs.bankservice.Bank");    	
-			
-    	// get clients
-	/*	List<> clientList = bank.getClients();
-		this.clientNames = new ArrayList<String>();
-		for (Client client : clientList) {
-			this.clientNames.add(client.getLastname());
+		//war = (War) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/BankBean!ch.hevs.bankservice.Bank");    	
+		weapon = (WeaponService) ctx.lookup("java:global/TP-PROJECT-E-0.0.1-SNAPSHOT/BankBean!ch.hevs.weaponservice.WeaponService");
+		war = (WarService) ctx.lookup("java:global/TP-PROJECT-E-0.0.1-SNAPSHOT/BankBean!ch.hevs.warservice.WarService");
+ 	
+		List<Weapon> weaponWeapon = weapon.GetWeapons();
+    	this.weaponNames = new ArrayList<String>();
+		for (Weapon weapon : weaponWeapon) {
+			this.weaponNames.add(weapon.getName());
 		}
-	 */		
+		
+	
 		// initialize account descriptions
 		this.sourceAccountDescriptions = new ArrayList<String>();
 		this.destinationAccountDescriptions = new ArrayList<String>();
@@ -51,7 +63,21 @@ public class WarZoneBean
 	//	this.destinationAccountDescriptions.add(accounts.get(0).getDescription());
     }
     
-    // transactionAmount
+    
+    
+    
+    public List<String> getWeaponNames() {
+		return weaponNames;
+	}
+
+	public void setWeaponNames(List<String> weaponNames) {
+		this.weaponNames = weaponNames;
+	}
+
+
+
+
+	// transactionAmount
     public int getTransactionAmount () {
     	return transactionAmount;
     }

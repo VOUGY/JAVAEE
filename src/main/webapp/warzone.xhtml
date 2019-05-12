@@ -11,9 +11,9 @@
 		<h:form>
 			<h:outputLabel value="This is war!"></h:outputLabel>
 			<h:selectOneMenu
-				value="#{warService.destinationGunDescription}">
+				value="#{WarZoneBean.weaponName}">
 				<f:selectItems
-					value="#{warService.destinationGunDescriptions}" />
+					value="#{WarZoneBean.weaponNames}" />
 			</h:selectOneMenu>
 		</h:form>
 

@@ -4,7 +4,7 @@
   <nodes xsi:type="pageflow:PFPage" name="transferForm.xhtml" x="338" y="178" id="pf15573476088732" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15573476088733" inlinks="pf15573476088731" path="/transferForm.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="showTransferResult.xhtml" x="554" y="178" id="pf15573476088734" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15573476088733" path="/showTransferResult.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="home.xhtml" x="144" y="300" id="pf15573476088745" path="/home.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="warzone.xhtml" x="362" y="288" id="pf15573476088746" path="/warzone.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="warzone.xhtml" x="350" y="300" id="pf15573476088746" path="/warzone.xhtml"/>
   <links id="pf15573476088731" target="pf15573476088732" source="pf15573476088730" outcome="transferForm"/>
   <links id="pf15573476088733" target="pf15573476088734" source="pf15573476088732" outcome="#{transferBean.performTransfer}"/>
 </pageflow:Pageflow>
