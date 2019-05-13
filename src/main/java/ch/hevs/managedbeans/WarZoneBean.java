@@ -13,6 +13,7 @@ import ch.hevs.businessobject.War;
 import ch.hevs.businessobject.Weapon;
 import ch.hevs.warservice.WarService;
 import ch.hevs.weaponservice.WeaponService;
+import ch.hevs.weaponservice.WeaponService;
 
 /**
  * WarZoneBean.java
@@ -32,22 +33,34 @@ public class WarZoneBean
     private WeaponService weapon;
     private WarService war;
     
-    
     @PostConstruct
     public void initialize() throws NamingException {
     	
     	// use JNDI to inject reference to bank EJB
     	//InitialContext ctxwar = new InitialContext();
     	InitialContext ctx = new InitialContext();
-		//war = (War) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/BankBean!ch.hevs.bankservice.Bank");    	
+		
 		weapon = (WeaponService) ctx.lookup("java:global/TP-PROJECT-0.0.1-SNAPSHOT/WeaponBean!ch.hevs.weaponservice.WeaponService");
-		war = (WarService) ctx.lookup("java:global/TP-PROJECT-0.0.1-SNAPSHOT/WarBean!ch.hevs.warservice.WarService");
+	//	war = (WarService) ctx.lookup("java:global/TP-PROJECT-0.0.1-SNAPSHOT/WarBean!ch.hevs.warservice.WarService");
 		weaponName = "Armes et Voitures";
 		List<Weapon> weaponWeapon = weapon.GetWeapons();
     	this.weaponNames = new ArrayList<String>();
 		for (Weapon weapon : weaponWeapon) {
 			this.weaponNames.add(weapon.getName());
 		}
+		
+		
+		// ADD FUNCTION OK
+		// weapon.AddCar();
+	
+		// MODIFY FUNCTION 
+		/*Car car = (Car) weapon.GetWeapon(1);
+		System.out.println(car.getName());
+		car.setName("LOL");
+		car.setIsTwoWheeled(true);*/
+		weapon.EditCar(car);
+		// DELETE FUNCTION OK 
+		//weapon.DeleteWeapon(1);
     }
     
     
@@ -71,9 +84,6 @@ public class WarZoneBean
 	public WeaponService getWeapon() {
 		return weapon;
 	}
-
-
-
 
 	public void setWeapon(WeaponService weapon) {
 		this.weapon = weapon;

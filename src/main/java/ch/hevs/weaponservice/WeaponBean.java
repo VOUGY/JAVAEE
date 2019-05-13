@@ -14,6 +14,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import ch.hevs.businessobject.Car;
+import ch.hevs.businessobject.Country;
 import ch.hevs.businessobject.Gun;
 import ch.hevs.businessobject.War;
 import ch.hevs.businessobject.Weapon;
@@ -35,13 +36,12 @@ public class WeaponBean implements WeaponService {
 
 	@Override
 	public void EditCar(Car car) {
-		Query query = em.createQuery("UPDATE Car SET description  = :des, name =  :name, quantity");
-		int updateCount = query.executeUpdate();
+		em.merge(car);
 	}
 	
 	@Override
 	public void EditGun(Gun gun) {
-		// TODO Auto-generated method stub
+		em.merge(gun);
 		
 	}
 	@Override
@@ -63,10 +63,11 @@ public class WeaponBean implements WeaponService {
 
 		Car cartmp = new Car();
 		cartmp.setDescription("New car");
-		cartmp.setIsTwoWheeled(false);
+		cartmp.setIsTwoWheeled(true);
 		cartmp.setName("CarName");
 		cartmp.setQuantity(10);
 		cartmp.setStrength(10);
+		
 		em.persist(cartmp);
 	}
 

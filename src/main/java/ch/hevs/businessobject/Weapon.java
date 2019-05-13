@@ -38,14 +38,17 @@ public class Weapon {
 	private List<Country> countries; 
 
 	
+	public List<Country> getCountries() {
+		return countries;
+	}
+	public void setCountries(List<Country> countries) {
+		this.countries = countries;
+	}
 	// get & set
 	public Long getId() {
 		return id;
 	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
+
 	public String getName() {
 		return name;
 	}
