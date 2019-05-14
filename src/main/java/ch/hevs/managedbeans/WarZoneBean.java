@@ -53,10 +53,9 @@ public class WarZoneBean
 		// ADD FUNCTION OK
 		// weapon.AddCar();
 	
-		// MODIFY FUNCTION 
-		Car car =weapon.GetCar(1);
+		// MODIFY FUNCTION OK  
+	/*	Car car =(Car) weaponWeapon.get(0);
 		weaponName = car.getName();
-		/*
 		System.out.println(car.getName());
 		car.setName("LOL");
 		car.setIsTwoWheeled(true);
