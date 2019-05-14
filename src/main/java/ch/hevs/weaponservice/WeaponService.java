@@ -28,5 +28,6 @@ public interface WeaponService {
 	//Views 
 	List<Weapon> GetWeapons();
 	Weapon GetWeapon(long id);
+	Car GetCar(long carId);
 
 }

@@ -42,7 +42,7 @@ public class WarZoneBean
 		
 		weapon = (WeaponService) ctx.lookup("java:global/TP-PROJECT-0.0.1-SNAPSHOT/WeaponBean!ch.hevs.weaponservice.WeaponService");
 	//	war = (WarService) ctx.lookup("java:global/TP-PROJECT-0.0.1-SNAPSHOT/WarBean!ch.hevs.warservice.WarService");
-		weaponName = "Armes et Voitures";
+		
 		List<Weapon> weaponWeapon = weapon.GetWeapons();
     	this.weaponNames = new ArrayList<String>();
 		for (Weapon weapon : weaponWeapon) {
@@ -54,11 +54,14 @@ public class WarZoneBean
 		// weapon.AddCar();
 	
 		// MODIFY FUNCTION 
-		/*Car car = (Car) weapon.GetWeapon(1);
+		Car car =weapon.GetCar(1);
+		weaponName = car.getName();
+		/*
 		System.out.println(car.getName());
 		car.setName("LOL");
-		car.setIsTwoWheeled(true);*/
+		car.setIsTwoWheeled(true);
 		weapon.EditCar(car);
+		*/
 		// DELETE FUNCTION OK 
 		//weapon.DeleteWeapon(1);
     }

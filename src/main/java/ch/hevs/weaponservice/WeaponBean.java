@@ -53,6 +53,12 @@ public class WeaponBean implements WeaponService {
 	public Weapon GetWeapon(long weaponId) {
 		return (Weapon) em.createQuery("FROM Weapon w where w.id =:id").setParameter("id", weaponId).getSingleResult();
 	}
+	@Override
+	public Car GetCar(long carId) {
+		return (Car) em.createQuery("SELECT c FROM Car c where c.id =:id", Car.class).setParameter("id", carId).getSingleResult();
+//		return (Car) em.createQuery("FROM Car c where c.id =:id")
+	}
+
 
 	@Override
 	public void AddCar(Car car) {
