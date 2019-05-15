@@ -3,9 +3,10 @@
   <nodes xsi:type="pageflow:PFPage" name="welcomeBank.xhtml" x="120" y="178" id="pf15573476088730" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15573476088731" path="/welcomeBank.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="transferForm.xhtml" x="338" y="178" id="pf15573476088732" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15573476088733" inlinks="pf15573476088731" path="/transferForm.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="showTransferResult.xhtml" x="554" y="178" id="pf15573476088734" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15573476088733" path="/showTransferResult.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="home.xhtml" x="144" y="300" id="pf15573476088745" outlinks="pf15576768255380" path="/home.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="warzone.xhtml" x="350" y="300" id="pf15573476088746" inlinks="pf15576768255380" path="/warzone.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="home.xhtml" x="144" y="300" id="pf15573476088745" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15576768255380" path="/home.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="warzone.xhtml" x="350" y="300" id="pf15573476088746" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf15576768255380" path="/warzone.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="addCar.xhtml" x="144" y="384" id="pf15576768255381" path="/addCar.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="showWeapons.xhtml" x="329" y="384" id="pf15577769173860" path="/showWeapons.xhtml"/>
   <links id="pf15573476088731" target="pf15573476088732" source="pf15573476088730" outcome="transferForm"/>
   <links id="pf15573476088733" target="pf15573476088734" source="pf15573476088732" outcome="#{transferBean.performTransfer}"/>
   <links id="pf15576768255380" target="pf15573476088746" source="pf15573476088745"/>
