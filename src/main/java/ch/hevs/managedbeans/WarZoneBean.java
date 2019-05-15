@@ -27,6 +27,9 @@ public class WarZoneBean
   // private War war;
     
     private List<String> weaponNames;
+    private List<String> warringCountries;
+    
+    private List<War> warWar;
 
 
 	private String weaponName;
@@ -41,12 +44,21 @@ public class WarZoneBean
     	InitialContext ctx = new InitialContext();
 		
 		weapon = (WeaponService) ctx.lookup("java:global/TP-PROJECT-0.0.1-SNAPSHOT/WeaponBean!ch.hevs.weaponservice.WeaponService");
-	//	war = (WarService) ctx.lookup("java:global/TP-PROJECT-0.0.1-SNAPSHOT/WarBean!ch.hevs.warservice.WarService");
-		
-		List<Weapon> weaponWeapon = weapon.GetWeapons();
+		war = (WarService) ctx.lookup("java:global/TP-PROJECT-0.0.1-SNAPSHOT/WeaponBean!ch.hevs.warservice.WarService");
+
+		// Get all weapons from database
+		List<Weapon> weaponWeapon = weapon.GetWeapons();		
     	this.weaponNames = new ArrayList<String>();
 		for (Weapon weapon : weaponWeapon) {
 			this.weaponNames.add(weapon.getName());
+		}
+		
+		// Get all wars from database
+		this.warWar = war.GetWars();
+		this.warringCountries = new ArrayList<String>();
+		for(War war : warWar) {
+			this.warringCountries.add(war.getCountryOne().getName());
+			this.warringCountries.add(war.getCountryTwo().getName());
 		}
 		
 		
@@ -89,5 +101,11 @@ public class WarZoneBean
 
 	public void setWeapon(WeaponService weapon) {
 		this.weapon = weapon;
+	}
+	
+	public String[][] getWarringCountries() {
+		String[][] warringCountries = null;
+		
+		return warringCountries;
 	}
 }

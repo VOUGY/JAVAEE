@@ -13,6 +13,10 @@
 			<h:selectOneMenu value="#{WarZoneBean.weaponName}">
 				<f:selectItems value="#{WarZoneBean.weaponNames}" />
 			</h:selectOneMenu>
+			<h:dataTable value="#{WarZoneBean.warWar}" var="warWar">
+    			<h:column>#{warWar.name}</h:column>
+    			<h:column>#{warWar.description}</h:column>
+			</h:dataTable>
 		</h:form>
 
 	</ui:define>

@@ -6,6 +6,7 @@ import javax.ejb.Local;
 
 import ch.hevs.businessobject.Car;
 import ch.hevs.businessobject.Gun;
+import ch.hevs.businessobject.War;
 import ch.hevs.businessobject.Weapon;
 
 @Local
@@ -17,6 +18,9 @@ public interface WarService {
 	void DeleteWar(long id);
 	void EditWar();
 	void FinishWar();
+	
+	//Views 
+	List<War> GetWars();
 	
 	
 	

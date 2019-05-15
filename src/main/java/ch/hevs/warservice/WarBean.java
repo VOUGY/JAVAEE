@@ -48,6 +48,11 @@ public class WarBean implements WarService {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public List<War> GetWars() {
+		return em.createQuery("FROM War").getResultList();
+	}
 		
 
 	
