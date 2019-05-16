@@ -6,20 +6,20 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
-	<ui:define name="content">
-		<h:form>
-			<h:outputLabel value="This is war!"></h:outputLabel>
-			<h:dataTable value="#{WarZoneBean.wars}" var="war">
-    			<h:column>#{war.description}</h:column>
-    			<h:column>
-    				<h:commandButton action="#{WarZoneBean.openWar(war.id)}" />
-    			</h:column>			
-			</h:dataTable>
-			<h:commandButton value="weapons" action="weapons" />
-			<h:commandButton value="countries" action="countries" />
-		</h:form>
-
-	</ui:define>
-</ui:composition>
+	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<h:outputLabel value="This is war!"></h:outputLabel>
+				<h:dataTable value="#{WarZoneBean.wars}" var="war">
+	    			<h:column>#{war.description}</h:column>
+	    			<h:column>
+	    				<h:commandButton action="#{WarZoneBean.openWar(war.id)}" />
+	    			</h:column>			
+				</h:dataTable>
+				<h:commandButton value="weapons" action="weapons" />
+				<h:commandButton value="countries" action="countries" />
+				<h:commandButton value="+" action="addWar" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </html>

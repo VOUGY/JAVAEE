@@ -1,6 +1,7 @@
 package ch.hevs.managedbeans;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -89,6 +90,10 @@ public class WarZoneBean
 		}
     		
     	return "war";
+    }
+    
+    public String addWar() {    	
+    	return "warzone";
     }
     
 	public List<War> getWars() {
