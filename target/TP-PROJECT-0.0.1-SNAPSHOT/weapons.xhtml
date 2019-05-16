@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:define name="content">
+        <h:outputLabel value="This is the weapons page"/>
+        <h:dataTable value="#{WarZoneBean.weapons}" var="weapon">
+    		<h:column>#{weapon.name}</h:column>
+    		<h:column>#{weapon.description}</h:column>
+    		<h:column>#{weapon.strength}</h:column>
+    		<h:column>#{weapon.quantity}</h:column>
+    		<h:column>
+    			<h:commandButton value="Edit" action="#{WarZoneBean.openWar(war.id)}" />
+    		</h:column>
+    		<h:column>
+    			<h:commandButton value="Delete" action="#{WarZoneBean.openWar(war.id)}" />
+    		</h:column>				
+		</h:dataTable>
+    </ui:define>
+</ui:composition>
+</html>

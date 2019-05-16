@@ -53,6 +53,11 @@ public class WarBean implements WarService {
 	public List<War> GetWars() {
 		return em.createQuery("FROM War").getResultList();
 	}
+	
+	@Override
+	public War GetWar(Long id) {
+		return (War) em.createQuery("FROM War WHERE id = " + id).getSingleResult();
+	}
 		
 
 	

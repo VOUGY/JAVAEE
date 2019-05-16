@@ -9,8 +9,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import ch.hevs.businessobject.Car;
+import ch.hevs.businessobject.Country;
 import ch.hevs.businessobject.War;
 import ch.hevs.businessobject.Weapon;
+import ch.hevs.countryservice.CountryService;
 import ch.hevs.warservice.WarService;
 import ch.hevs.weaponservice.WeaponService;
 import ch.hevs.weaponservice.WeaponService;
@@ -22,19 +24,20 @@ import ch.hevs.weaponservice.WeaponService;
 
 public class WarZoneBean
 {
-  //  private List<Client> clients;
-  
-  // private War war;
-    
-    private List<String> weaponNames;
-    private List<String> warringCountries;
-    
-    private List<War> warWar;
 
+    private List<War> wars;
+    private List<Country> countries;
+    private List<Weapon> weapons;
 
 	private String weaponName;
     private WeaponService weapon;
     private WarService war;
+    private CountryService country;
+    
+    private War selectedWar;
+    private Country selectedCountry;
+    private Weapon selectedWeapon;
+
     
     @PostConstruct
     public void initialize() throws NamingException {
@@ -44,23 +47,17 @@ public class WarZoneBean
     	InitialContext ctx = new InitialContext();
 		
 		weapon = (WeaponService) ctx.lookup("java:global/TP-PROJECT-0.0.1-SNAPSHOT/WeaponBean!ch.hevs.weaponservice.WeaponService");
-		war = (WarService) ctx.lookup("java:global/TP-PROJECT-0.0.1-SNAPSHOT/WeaponBean!ch.hevs.warservice.WarService");
-
+		war = (WarService) ctx.lookup("java:global/TP-PROJECT-0.0.1-SNAPSHOT/WarBean!ch.hevs.warservice.WarService");
+		country = (CountryService) ctx.lookup("java:global/TP-PROJECT-0.0.1-SNAPSHOT/CountryBean!ch.hevs.countryservice.CountryService");
+		
 		// Get all weapons from database
-		List<Weapon> weaponWeapon = weapon.GetWeapons();		
-    	this.weaponNames = new ArrayList<String>();
-		for (Weapon weapon : weaponWeapon) {
-			this.weaponNames.add(weapon.getName());
-		}
+		this.weapons = weapon.GetWeapons();		
 		
 		// Get all wars from database
-		this.warWar = war.GetWars();
-		this.warringCountries = new ArrayList<String>();
-		for(War war : warWar) {
-			this.warringCountries.add(war.getCountryOne().getName());
-			this.warringCountries.add(war.getCountryTwo().getName());
-		}
+		this.wars = war.GetWars();
 		
+		// Get all countries from database
+		this.countries = country.GetCountries();
 		
 		// ADD FUNCTION OK
 		// weapon.AddCar();
@@ -75,22 +72,55 @@ public class WarZoneBean
 		*/
 		// DELETE FUNCTION OK 
 		//weapon.DeleteWeapon(1);
+    }   
+    
+    public String openWar(Long selectedWar) {
+    	
+    	try 
+    	{
+    		InitialContext ctx = new InitialContext();
+			war = (WarService) ctx.lookup("java:global/TP-PROJECT-0.0.1-SNAPSHOT/WarBean!ch.hevs.warservice.WarService");
+			this.selectedWar = war.GetWar(selectedWar);
+    	} 
+    	catch (NamingException e) 
+    	{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    		
+    	return "war";
     }
     
-    
-    
-    
-    public List<String> getWeaponNames() {
-		return weaponNames;
+	public List<War> getWars() {
+		return wars;
 	}
-
-	public void setWeaponNames(List<String> weaponNames) {
-		this.weaponNames = weaponNames;
+	
+	public void setWars(List<War> wars) {
+		this.wars = wars;
+	}
+	
+	public List<Country> getCountries() {
+		return countries;
+	}
+	
+	public void setCountries(List<Country> countries)
+	{
+		this.countries = countries;
+	}
+	
+	public List<Weapon> getWeapons() {
+		return weapons;
+	}
+	
+	public void setWeapons(List<Weapon> weapons)
+	{
+		this.weapons = weapons;
 	}
 	
     public String getWeaponName() {
 		return weaponName;
 	}
+    
 	public void setWeaponName(String weaponName) {
 		this.weaponName = weaponName;
 	}
@@ -107,5 +137,29 @@ public class WarZoneBean
 		String[][] warringCountries = null;
 		
 		return warringCountries;
+	}
+	
+	public Country getSelectedCountry() {
+		return this.selectedCountry;
+	}
+	
+	public void setSelectedCountry(Country selectedCountry) {
+		this.selectedCountry = selectedCountry;
+	}
+	
+	public Weapon getSelectedWeapon() {
+		return this.selectedWeapon;
+	}
+	
+	public void setSelectedWeapon(Weapon selectedWeapon) {
+		this.selectedWeapon = selectedWeapon;
+	}
+	
+	public War getSelectedWar() {
+		return this.selectedWar;
+	}
+	
+	public void setSelectedWar(War selectedWar) {
+		this.selectedWar = selectedWar;
 	}
 }

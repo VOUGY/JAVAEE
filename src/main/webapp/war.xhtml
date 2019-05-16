@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:define name="content">
+        <h:outputLabel value="This is a war page"></h:outputLabel>
+        <br/>
+        
+    	<h:outputLabel value="#{WarZoneBean.selectedWar.countryOne.getName()} VS #{WarZoneBean.selectedWar.countryTwo.getName()}" />
+		<br/>
+		
+		<!-- insert list of weapons -->
+		
+		<h:outputLabel value="Name of war : #{WarZoneBean.selectedWar.name}"/>
+		<br/>
+		
+		<h:outputLabel value="Start of war : #{WarZoneBean.selectedWar.startDate}"/>
+		<br/>
+		
+		<h:outputLabel value="End of war : #{WarZoneBean.selectedWar.endDate}" />
+		<br/>
+		
+		<h:commandButton value="Edit" action="#{WarZoneBean.openWar(war.id)}" />
+		<br/>
+		
+		<h:commandButton value="Delete" action="#{WarZoneBean.openWar(war.id)}" />
+		<br/>
+		     
+    </ui:define>
+</ui:composition>
+</html>

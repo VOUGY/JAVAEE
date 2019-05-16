@@ -21,10 +21,8 @@ public interface WarService {
 	
 	//Views 
 	List<War> GetWars();
-	
-	
-	
-	
+	War GetWar(Long id);
+		
 	// To do => GV and NS	
 	
 	/*
