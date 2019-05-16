@@ -13,12 +13,18 @@
 				<h:dataTable value="#{WarZoneBean.wars}" var="war">
 	    			<h:column>#{war.description}</h:column>
 	    			<h:column>
-	    				<h:commandButton action="#{WarZoneBean.openWar(war.id)}" />
+	    				<h:commandButton rendered="true" action="#{WarZoneBean.openWar(war.id)}" />
 	    			</h:column>			
 				</h:dataTable>
-				<h:commandButton value="weapons" action="weapons" />
-				<h:commandButton value="countries" action="countries" />
-				<h:commandButton value="+" action="addWar" />
+		        <h:commandButton action="#{navigationController.showPage}" value="Weapons">
+		      		<f:param name="pageId" value="countries" />
+		   		</h:commandButton>
+		        <h:commandButton action="#{navigationController.showPage}" value="Countries">
+		      		<f:param name="pageId" value="countries" />
+		   		</h:commandButton>
+		        <h:commandButton action="#{navigationController.showPage}" value="+">
+		      		<f:param name="pageId" value="addWar" />
+		   		</h:commandButton>
 			</h:form>
 		</ui:define>
 	</ui:composition>

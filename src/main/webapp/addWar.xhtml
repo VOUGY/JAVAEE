@@ -35,11 +35,11 @@
 		                    itemLabel="#{country.name}" itemValue="#{country}" binding="#{countryTwo}"/>
 		            </h:selectOneMenu>
 		    	<br/>
-		    	<h:commandButton value="Save" action="#{WarZoneBean.addWar()}" />
+		        <h:commandButton action="#{navigationController.showPage}" value="Validate">
+		      		<f:param name="pageId" value="warzone" />
+		   		</h:commandButton>
 	    	</h:form>
 	    </ui:define>
 	</ui:composition>
     </body>
-
-
 </html>

@@ -89,11 +89,11 @@ public class WarZoneBean
 			e.printStackTrace();
 		}
     		
-    	return "war";
+    	return "war?faces-redirect=true";
     }
     
     public String addWar() {    	
-    	return "warzone";
+    	return "warzone?faces-redirect=true";
     }
     
 	public List<War> getWars() {
