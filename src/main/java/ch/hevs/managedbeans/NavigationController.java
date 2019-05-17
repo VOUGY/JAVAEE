@@ -41,6 +41,7 @@ public class NavigationController implements Serializable {
       		
       	case "addWeapon":
       		return "addWeapon?faces-redirect=true";
+      		
       	case "addCar" :
       		return "addCar?faces-redirect=true";
       }

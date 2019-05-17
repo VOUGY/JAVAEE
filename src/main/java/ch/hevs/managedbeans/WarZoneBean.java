@@ -92,6 +92,11 @@ public class WarZoneBean
     		
     	return "war?faces-redirect=true";
     }
+    public String editSelCar(long selectedWeaponId)
+	{
+		this.selectedWeapon = weapon.GetWeapon(selectedWeaponId);	
+		return "editCar?faces-redirect=true";
+	}
   
     public String addWar() {    	
     	return "warzone?faces-redirect=true";
@@ -100,11 +105,7 @@ public class WarZoneBean
 	public List<War> getWars() {
 		return wars;
 	}
-	public String editSelCar(long selectedWeaponId)
-	{
-		this.selectedWeapon = weapon.GetWeapon(selectedWeaponId);	
-		return "editCar?faces-redirect=true";
-	}
+	
 	public String editCar()
 	{
 		weapon.EditCar((Car)newWeapon);
