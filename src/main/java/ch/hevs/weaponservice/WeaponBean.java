@@ -70,7 +70,7 @@ public class WeaponBean implements WeaponService {
 
 		Car cartmp = new Car();
 		cartmp.setDescription("New car");
-		cartmp.setIsTwoWheeled(true);
+		cartmp.setWheels(4);
 		cartmp.setName("CarName");
 		cartmp.setQuantity(10);
 		cartmp.setStrength(10);
@@ -87,7 +87,7 @@ public class WeaponBean implements WeaponService {
 		Gun guntmp = new Gun();
 		guntmp.setDescription("New gun");
 		guntmp.setIsAutomatic(true);
-		guntmp.setName("CarName");
+		guntmp.setName("Ak47");
 		guntmp.setQuantity(1000);
 		guntmp.setStrength(4);
 		em.persist(guntmp);

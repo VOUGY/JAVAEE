@@ -61,11 +61,13 @@ public class WarZoneBean {
 
 		// Get all weapons from database
 		this.weapons = weapon.GetWeapons();
+		weapon.AddCar();
 		tmpCar = new Car();
 		tmpGun = new Gun();
 		// Get all wars from database
 		this.wars = war.GetWars();
 
+		
 		// Get all countries from database
 		this.countries = country.GetCountries();
 		this.countryNames = new ArrayList<String>();
@@ -75,7 +77,7 @@ public class WarZoneBean {
 		}
 		// ADD FUNCTION OK
 		// weapon.AddCar();
-
+		//weapon.AddGun();
 		// MODIFY FUNCTION OK
 		/*
 		 * Car car =(Car) weaponWeapon.get(0); weaponName = car.getName();
@@ -125,14 +127,16 @@ public class WarZoneBean {
 	}
 
 	public String editCar() {
-		weapon.EditCar((Car) tmpCar);
-		return "warzone?faces-redirect=true";
+		weapon.EditCar(tmpCar);
+		tmpCar = new Car();
+		UpdateData();
+		return "weapons?faces-redirect=true";
 	}
 
 	public String addCar() {
 		weapon.AddCar(tmpCar);
 		UpdateData();
-		return "warzone?faces-redirect=true";
+		return "weapons?faces-redirect=true";
 	}
 
 	public void setWars(List<War> wars) {

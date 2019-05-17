@@ -5,27 +5,52 @@
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core">
+  <h:head>
+    	<h:outputStylesheet library="css" name="table-style.css"  />
+    </h:head>
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
     <ui:define name="content">
     	<h:form>
 	        <h:outputLabel value="This is the weapons page"/>
-	        <h:dataTable value="#{WarZoneBean.weapons}" var="weapon">
-	        	<h:column>#{weapon.id}</h:column>
-	    		<h:column>#{weapon.name}</h:column>
-	    		<h:column>#{weapon.description}</h:column>
-	    		<h:column>#{weapon.strength}</h:column>
-	    		<h:column>#{weapon.quantity}</h:column>
+	        
+	        	 <h:commandButton action="#{navigationController.showPage}" value="add a Car">
+			      		<f:param name="pageId" value="addCar" />
+			 </h:commandButton>
+			  <h:commandButton action="#{navigationController.showPage}" value="add a Gun" disabled="true">
+			      		<f:param name="pageId" value="addGun" />
+			 </h:commandButton>
+	        <h:dataTable value="#{WarZoneBean.weapons}" var="weapon"
+	        	styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row">
+	        	
 	    		<h:column>
-	    			<h:commandButton value="Edit" action="#{WarZoneBean.editCar(weapon.id)}" />
+	    			<f:facet name="header">Name</f:facet>
+	    			#{weapon.name}
+    			</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Description</f:facet>
+	   	    		#{weapon.description}
+   	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Strength</f:facet>
+	    			#{weapon.strength}
 	    		</h:column>
 	    		<h:column>
+	    			<f:facet name="header">Quantity</f:facet>
+	    			#{weapon.quantity}
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Edit</f:facet>
+	    			<h:commandButton value="Edit" action="#{WarZoneBean.editCar(weapon.id)}" rendered="#{weapon.class eq 'class ch.hevs.businessobject.Car'}" />	   
+	    				 		
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Delete</f:facet>
 	    			<h:commandButton value="Delete" action="#{WarZoneBean.deleteWeapon(weapon.id)}" />
 	    		</h:column>				
 			</h:dataTable>
-			 <h:commandButton action="#{navigationController.showPage}" value="+">
-			      		<f:param name="pageId" value="addCar" />
-			 </h:commandButton>
    		</h:form>
     </ui:define>
 </ui:composition>

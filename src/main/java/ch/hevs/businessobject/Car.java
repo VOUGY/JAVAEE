@@ -15,24 +15,23 @@ import javax.persistence.Table;
 public class Car extends Weapon {
 	
 	// table attributes
-	private Boolean isTwoWheeled;
+	private int wheels = 4;
 	
-	// get & set	
-	public Boolean getIsTwoWheeled() {
-		return isTwoWheeled;
+	
+	public int getWheels() {
+		return wheels;
 	}
-
-	public void setIsTwoWheeled(Boolean isAutomatic) {
-		this.isTwoWheeled = isTwoWheeled;
+	public void setWheels(int wheels) {
+		this.wheels = wheels;
 	}
-	// constructor
+		// constructor
 		public Car() {
 			
 		}
-		public Car(String name, String description, int strength, int quantity, Boolean isAutomatic)
+		public Car(String name, String description, int strength, int quantity, int wheels)
 		{
 			super(name,description,strength,quantity);
-			this.isTwoWheeled = isTwoWheeled;
+			this.wheels = wheels;
 		}
 		
 			

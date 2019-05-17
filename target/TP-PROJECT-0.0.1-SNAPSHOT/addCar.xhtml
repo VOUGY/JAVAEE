@@ -34,9 +34,10 @@
 						</h:inputText></td>
 				</tr>
 				<tr>
-				<td><h:outputText value="Enter 2 or 4 wheels : " /></td>
-					<td> <h:selectBooleanCheckbox value = "#{WarZoneBean.tmpCar.isTwoWheeled}" id = "IsTwoWheeled" /></td>
-				  
+				<td><h:outputText value="Number of wheels : " /></td>
+					<td> <h:inputText value="#{WarZoneBean.tmpCar.wheels}">
+						 </h:inputText>
+					</td>
 				</tr>
 				<tr>
 					<td></td>
