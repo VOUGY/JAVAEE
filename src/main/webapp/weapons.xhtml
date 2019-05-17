@@ -10,18 +10,21 @@
     <ui:define name="content">
         <h:outputLabel value="This is the weapons page"/>
         <h:dataTable value="#{WarZoneBean.weapons}" var="weapon">
+        	<h:column>#{weapon.id}</h:column>
     		<h:column>#{weapon.name}</h:column>
     		<h:column>#{weapon.description}</h:column>
     		<h:column>#{weapon.strength}</h:column>
     		<h:column>#{weapon.quantity}</h:column>
     		<h:column>
-    			<h:commandButton value="Edit" action="#{WarZoneBean.openWar(war.id)}" />
+    			<h:commandButton value="Edit" action="#{WarZoneBean.editSelCar(weapon.id)}" />
     		</h:column>
     		<h:column>
     			<h:commandButton value="Delete" action="#{WarZoneBean.openWar(war.id)}" />
     		</h:column>				
 		</h:dataTable>
-		<h:commandButton value="+" action="addWeapon" />
+		 <h:commandButton action="#{navigationController.showPage}" value="+">
+		      		<f:param name="pageId" value="addCar" />
+		   		</h:commandButton>
     </ui:define>
 </ui:composition>
 </html>

@@ -38,6 +38,7 @@ public class WarZoneBean
     private War selectedWar;
     private Country selectedCountry;
     private Weapon selectedWeapon;
+    private Car newWeapon;
 
     
     @PostConstruct
@@ -53,7 +54,7 @@ public class WarZoneBean
 		
 		// Get all weapons from database
 		this.weapons = weapon.GetWeapons();		
-		
+		newWeapon = new Car();
 		// Get all wars from database
 		this.wars = war.GetWars();
 		
@@ -91,7 +92,7 @@ public class WarZoneBean
     		
     	return "war?faces-redirect=true";
     }
-    
+  
     public String addWar() {    	
     	return "warzone?faces-redirect=true";
     }
@@ -99,7 +100,21 @@ public class WarZoneBean
 	public List<War> getWars() {
 		return wars;
 	}
-	
+	public String editSelCar(long selectedWeaponId)
+	{
+		this.selectedWeapon = weapon.GetWeapon(selectedWeaponId);	
+		return "editCar?faces-redirect=true";
+	}
+	public String editCar()
+	{
+		weapon.EditCar((Car)newWeapon);
+		return "warzone?faces-redirect=true";
+	}
+	public String addCar()
+	{
+		weapon.AddCar(newWeapon);
+		return "warzone?faces-redirect=true";
+	}
 	public void setWars(List<War> wars) {
 		this.wars = wars;
 	}
@@ -167,4 +182,13 @@ public class WarZoneBean
 	public void setSelectedWar(War selectedWar) {
 		this.selectedWar = selectedWar;
 	}
+
+	public Weapon getNewWeapon() {
+		return newWeapon;
+	}
+
+	public void setNewWeapon(Car newWeapon) {
+		this.newWeapon = newWeapon;
+	}
+	
 }

@@ -17,19 +17,19 @@
 				</tr>
 				<tr>
 					<td><h:outputText value="Enter Name : " /></td>
-					<td><h:inputText value="#{WarZoneBean}" /></td>
+					<td><h:inputText value="#{WarZoneBean.newWeapon.name}" /></td>
 				</tr>
 				<tr>
 					<td><h:outputText value="Enter Description : " /></td>
-					<td><h:inputText value="#{user.name}" /></td>
+					<td><h:inputText value="#{WarZoneBean.newWeapon.description}" /></td>
 				</tr>
 				<tr>
 					<td><h:outputText value="Enter quantity : " /></td>
-					<td><h:inputText value="#{user.address}" /></td>
+					<td><h:inputText value="#{WarZoneBean.newWeapon.quantity}" /></td>
 				</tr>
 				<tr>
 					<td><h:outputText value="Enter strength : " /></td>
-					<td><h:inputText value="#{user.created_date}">
+					<td><h:inputText value="#{WarZoneBean.newWeapon.strength}">
 							
 						</h:inputText></td>
 				</tr>
@@ -40,7 +40,7 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><h:commandButton value="Insert" action="#{user.add}" /></td>
+					<td><h:commandButton value="Insert" action="#{WarZoneBean.addCar}" /></td>
 				</tr>
 			</table>
 		</h:form>
