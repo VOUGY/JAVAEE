@@ -10,29 +10,27 @@
 	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	    <ui:define name="content">
 	    	<h:form>
-		    	<h:outputLabel value="Name : "></h:outputLabel><h:inputText binding="#{name}" value="" /> 
+		    	<h:outputLabel value="Name : "></h:outputLabel><h:inputText value="#{WarZoneBean.addWar.name}" /> 
 		    	<br/>
 		    	
-		    	<h:outputLabel value="Description : "></h:outputLabel><h:inputText binding="#{description}" value="" /> 
+		    	<h:outputLabel value="Description : "></h:outputLabel><h:inputText value="#{WarZoneBean.addWar.description}" /> 
 		    	<br/>
 		    	
-		    	<h:outputLabel value="Start date : "></h:outputLabel><h:inputText binding="#{startDate}" value="" /> 
+		    	<h:outputLabel value="Start date : "></h:outputLabel><h:inputText value="#{WarZoneBean.addWar.name}" /> 
 		    	<br/>
 		    	
-		    	<h:outputLabel value="End date : "></h:outputLabel><h:inputText binding="#{endDate}" value="" /> 
+		    	<h:outputLabel value="End date : "></h:outputLabel><h:inputText value="#{WarZoneBean.addWar.name}" /> 
 		    	<br/>
 		    	
 		    	<h:outputLabel value="Country 1 : "></h:outputLabel>
-		    		<h:selectOneMenu value="#{WarZoneBean.countries}">
-		                <f:selectItems value="#{WarZoneBean.countries}" var="country"
-		                    itemLabel="#{country.name}" itemValue="#{country}" binding="#{countryOne}"/>
+		    		<h:selectOneMenu value="#{WarZoneBean.countryName}">
+		                <f:selectItems value="#{WarZoneBean.countryNames}"/>
 		            </h:selectOneMenu>
 		    	<br/>
 		    	
 		    	<h:outputLabel value="Country 2 : "></h:outputLabel>
-		    		<h:selectOneMenu value="#{WarZoneBean.countries}">
-		                <f:selectItems value="#{WarZoneBean.countries}" var="country"
-		                    itemLabel="#{country.name}" itemValue="#{country}" binding="#{countryTwo}"/>
+		    		<h:selectOneMenu value="#{WarZoneBean.countryName}">
+		                <f:selectItems value="#{WarZoneBean.countryNames}"/>
 		            </h:selectOneMenu>
 		    	<br/>
 		        <h:commandButton action="#{navigationController.showPage}" value="Validate">
