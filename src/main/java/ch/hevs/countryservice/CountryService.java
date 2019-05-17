@@ -12,5 +12,7 @@ public interface CountryService {
 	
 	//Views 
 	List<Country> GetCountries();
+	
+	Country GetCountry(Long id);
 
 }
