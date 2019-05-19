@@ -7,6 +7,8 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
@@ -20,14 +22,15 @@ import ch.hevs.businessobject.War;
 import ch.hevs.businessobject.Weapon;
 
 @Stateless
-public class WeaponBean implements WeaponService {
+@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
 
+public class WeaponBean implements WeaponService {
 	
 	@PersistenceContext(name = "WarPU")
 	private EntityManager em;
 
 
-	@Override
+	
 	public int DeleteWeapon(long weaponId) {
 		int delete = em.createQuery("DELETE FROM Weapon w where w.id = :id").setParameter("id", weaponId)
 				.executeUpdate();
