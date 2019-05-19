@@ -12,7 +12,7 @@
 	    	<h:outputLabel value="This is a war page"></h:outputLabel>
 	        <br/>
 	        
-	    	<h:outputLabel value="#{WarZoneBean.tmpWar.countryOne.getName()} VS #{WarZoneBean.selectedWar.countryTwo.getName()}" />
+	    	<h:outputLabel value="#{WarZoneBean.tmpWar.countryOne.name} VS #{WarZoneBean.tmpWar.countryTwo.name}" />
 			<br/>
 			
 			<!-- insert list of weapons -->
@@ -30,7 +30,17 @@
 			</h:outputLabel>
 			<br/>
 			
-			<h:commandButton value="Finish war" action="#{WarZoneBean.finishWar()}" />			     
+			<h:outputLabel value="Weapons of #{WarZoneBean.tmpWar.countryOne.name}" />
+			<h:dataTable value="#{WarZoneBean.tmpWar.countryOne.weapons}" var="weapon">
+	    		<h:column>#{weapon.name}</h:column>		
+			</h:dataTable>
+			
+				<h:outputLabel value="Weapons of #{WarZoneBean.tmpWar.countryTwo.name}" />
+			<h:dataTable value="#{WarZoneBean.tmpWar.countryTwo.weapons}" var="weapon">
+	    		<h:column>#{weapon.name}</h:column>		
+			</h:dataTable>
+			
+			<h:commandButton value="Finish war" action="#{WarZoneBean.finishWar}" />			     
     	</h:form>
         
     </ui:define>

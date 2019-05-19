@@ -86,6 +86,7 @@ public class Weapon {
 		
 	}
 	public Weapon() {
+		countries = new ArrayList<>();
 		
 	}
 

@@ -40,7 +40,7 @@ public class WarZoneBean {
 	private Country selectedCountry;
 	private List<String> countryNames;
 	private String countryName;
-	
+
 	private String tmpCountryOneName;
 	private String tmpCountryTwoName;
 
@@ -48,10 +48,10 @@ public class WarZoneBean {
 	private Car tmpCar;
 	private Gun tmpGun;
 	private Weapon selectedWeapon;
-	
+
 	// War variable (to edit or add)
 	private War tmpWar;
-	
+
 	// Country variable (to add)
 	private Country tmpCountry;
 
@@ -59,7 +59,6 @@ public class WarZoneBean {
 	public void initialize() throws NamingException {
 
 		// use JNDI to inject reference to bank EJB
-		// InitialContext ctxwar = new InitialContext();
 		InitialContext ctx = new InitialContext();
 
 		weapon = (WeaponService) ctx
@@ -70,33 +69,19 @@ public class WarZoneBean {
 
 		// Get all weapons from database
 		this.weapons = weapon.GetWeapons();
-		weapon.AddCar();
 		tmpCar = new Car();
-		tmpGun = new Gun();
 
 		// Get all wars from database
 		this.wars = war.GetWars();
 		tmpWar = new War();
-		
-		
+
 		// Get all countries from database
 		this.countries = country.GetCountries();
 		this.countryNames = new ArrayList<String>();
-		
+
 		for (int i = 0; i < this.countries.size(); i++) {
 			this.countryNames.add(this.countries.get(i).getName());
 		}
-		// ADD FUNCTION OK
-		// weapon.AddCar();
-		//weapon.AddGun();
-		// MODIFY FUNCTION OK
-		/*
-		 * Car car =(Car) weaponWeapon.get(0); weaponName = car.getName();
-		 * System.out.println(car.getName()); car.setName("LOL");
-		 * car.setIsTwoWheeled(true); weapon.EditCar(car);
-		 */
-		// DELETE FUNCTION OK
-		// weapon.DeleteWeapon(1);
 	}
 
 	public void UpdateData() {
@@ -105,12 +90,13 @@ public class WarZoneBean {
 		this.wars = war.GetWars();
 	}
 
-	public void AddData()
-	{
+	public void AddData() {
 		weapon.AddCar();
 		weapon.AddGun();
 		country.AddCountries();
+		
 	}
+
 	public String openWar(Long selectedWar) {
 		try {
 			InitialContext ctx = new InitialContext();
@@ -125,39 +111,13 @@ public class WarZoneBean {
 		return "war?faces-redirect=true";
 	}
 
-	public String editCar(long selectedWeaponId) {
-		tmpCar = weapon.GetCar(selectedWeaponId);
-		return "editCar?faces-redirect=true";
-	}
-
 	public String finishWar() {
-		
+
 		war.FinishWar(tmpWar);
 		UpdateData();
 		return "war?faces-redirect=true";
 
 	}
-	
-	public String editCar() {
-		weapon.EditCar(tmpCar);
-		tmpCar = new Car();
-		UpdateData();
-		return "weapons?faces-redirect=true";
-	}
-
-	public String addCar() {
-		weapon.AddCar(tmpCar);
-		UpdateData();
-		return "weapons?faces-redirect=true";
-
-	}
-
-	public String deleteWeapon(long selectedWeaponId) {
-		weapon.DeleteWeapon(selectedWeaponId);
-		UpdateData();
-		return "warzone?faces-redirect=true";
-	}
-
 	public String addWar() {
 		tmpWar.setCountryOne(country.GetCountryWithName(tmpCountryOneName));
 		tmpWar.setCountryTwo(country.GetCountryWithName(tmpCountryTwoName));
@@ -167,6 +127,35 @@ public class WarZoneBean {
 		return "warzone?faces-redirect=true";
 	}
 	
+	
+	public String editCar(long selectedWeaponId) {
+		tmpCar = weapon.GetCar(selectedWeaponId);
+		return "editCar?faces-redirect=true";
+	}
+
+	public String editCar() {
+		weapon.EditCar(tmpCar);
+		tmpCar = new Car();
+		UpdateData();
+		return "weapons?faces-redirect=true";
+	}
+
+	public String addCar() {
+		weapon.AddCar(tmpCar);
+		tmpCar = new Car();
+		UpdateData();
+		return "weapons?faces-redirect=true";
+
+	}
+
+	public String deleteWeapon(long selectedWeaponId) {
+		weapon.DeleteWeapon(selectedWeaponId);
+		UpdateData();
+		return "weapons?faces-redirect=true";
+	}
+
+
+
 	public Country getCountryWithName(String countryName) {
 		return country.GetCountryWithName(countryName);
 	}
@@ -175,21 +164,16 @@ public class WarZoneBean {
 		return wars;
 	}
 
-	
-	
 	public String editWar() {
 		war.EditWar(tmpWar);
 		tmpWar = new War();
 		UpdateData();
 		return "warzone?faces-redirect=true";
 	}
-	
 
 	public void setWars(List<War> wars) {
 		this.wars = wars;
 	}
-
-
 
 	public List<Country> getCountries() {
 		return countries;
@@ -326,13 +310,5 @@ public class WarZoneBean {
 	public void setTmpCountryTwoName(String tmpCountryTwoName) {
 		this.tmpCountryTwoName = tmpCountryTwoName;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import ch.hevs.businessobject.Car;
 import ch.hevs.businessobject.Country;
 import ch.hevs.businessobject.War;
+import ch.hevs.businessobject.Weapon;
 
 @Stateless
 public class CountryBean implements CountryService {
@@ -70,5 +71,10 @@ public class CountryBean implements CountryService {
 		em.persist(country4);
 		em.persist(country5);
 		
+	}
+	public void AddWeaponCountry(Country country, Weapon weapon)
+	{
+		country.getWeapons().add(weapon);
+		em.persist(country);
 	}
 }
