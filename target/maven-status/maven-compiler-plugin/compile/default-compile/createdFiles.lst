@@ -1,0 +1,14 @@
+ch\hevs\weaponservice\WeaponService.class
+ch\hevs\managedbeans\CountryConverter.class
+ch\hevs\businessobject\Weapon.class
+ch\hevs\weaponservice\WeaponBean.class
+ch\hevs\businessobject\Car.class
+ch\hevs\countryservice\CountryBean.class
+ch\hevs\countryservice\CountryService.class
+ch\hevs\managedbeans\WarZoneBean.class
+ch\hevs\businessobject\Gun.class
+ch\hevs\businessobject\War.class
+ch\hevs\warservice\WarBean.class
+ch\hevs\warservice\WarService.class
+ch\hevs\businessobject\Country.class
+ch\hevs\managedbeans\NavigationController.class
