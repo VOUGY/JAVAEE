@@ -73,7 +73,7 @@ public class WarZoneBean {
 		weapon.AddCar();
 		tmpCar = new Car();
 		tmpGun = new Gun();
-		
+
 		// Get all wars from database
 		this.wars = war.GetWars();
 		tmpWar = new War();
@@ -123,12 +123,27 @@ public class WarZoneBean {
 		tmpCar = weapon.GetCar(selectedWeaponId);
 		return "editCar?faces-redirect=true";
 	}
-	
+
 	public String finishWar() {
 		
 		war.FinishWar(tmpWar);
 		UpdateData();
 		return "war?faces-redirect=true";
+
+	}
+	
+	public String editCar() {
+		weapon.EditCar(tmpCar);
+		tmpCar = new Car();
+		UpdateData();
+		return "weapons?faces-redirect=true";
+	}
+
+	public String addCar() {
+		weapon.AddCar(tmpCar);
+		UpdateData();
+		return "weapons?faces-redirect=true";
+
 	}
 
 	public String deleteWeapon(long selectedWeaponId) {
@@ -177,6 +192,11 @@ public class WarZoneBean {
 		tmpWar = new War();
 		UpdateData();
 		return "warzone?faces-redirect=true";
+
+	
+
+	public void setWars(List<War> wars) {
+		this.wars = wars;
 	}
 
 
