@@ -169,30 +169,14 @@ public class WarZoneBean {
 		return wars;
 	}
 
-	public void setWars(List<War> wars) {
-		this.wars = wars;
-	}
 	
-	public String editCar() {
-		weapon.EditCar(tmpCar);
-		tmpCar = new Car();
-		UpdateData();
-		return "weapons?faces-redirect=true";
-	}
-
-	public String addCar() {
-		weapon.AddCar(tmpCar);
-		UpdateData();
-		tmpCar = new Car();
-		return "weapons?faces-redirect=true";
-	}
 	
 	public String editWar() {
 		war.EditWar(tmpWar);
 		tmpWar = new War();
 		UpdateData();
 		return "warzone?faces-redirect=true";
-
+	}
 	
 
 	public void setWars(List<War> wars) {
