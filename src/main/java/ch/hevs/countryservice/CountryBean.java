@@ -24,5 +24,10 @@ public class CountryBean implements CountryService {
 	public Country GetCountry(Long id) {
 		return (Country) em.createQuery("From Country WHERE id = " + id).getSingleResult();
 	}
+	
+	@Override
+	public Country GetCountryWithName(String countryName) {
+		return (Country) em.createQuery("From Country Where name = '" + countryName + "'").getSingleResult();
+	}
 
 }

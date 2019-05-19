@@ -8,29 +8,31 @@
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
     <ui:define name="content">
-        <h:outputLabel value="This is a war page"></h:outputLabel>
-        <br/>
+    	<h:form>
+	    	<h:outputLabel value="This is a war page"></h:outputLabel>
+	        <br/>
+	        
+	    	<h:outputLabel value="#{WarZoneBean.tmpWar.countryOne.getName()} VS #{WarZoneBean.selectedWar.countryTwo.getName()}" />
+			<br/>
+			
+			<!-- insert list of weapons -->
+			
+			<h:outputLabel value="Name of war : #{WarZoneBean.tmpWar.name}" />
+			<br/>
+			
+			<h:outputLabel value="Start of war : #{WarZoneBean.tmpWar.startDate}">
+				<f:convertDateTime pattern="dd-MM-yyyy" />
+			</h:outputLabel>
+			<br/>
+			
+			<h:outputLabel value="End of war : #{WarZoneBean.tmpWar.endDate}">
+				<f:convertDateTime pattern="dd-MM-yyyy" />
+			</h:outputLabel>
+			<br/>
+			
+			<h:commandButton value="Finish war" action="#{WarZoneBean.finishWar()}" />			     
+    	</h:form>
         
-    	<h:outputLabel value="#{WarZoneBean.selectedWar.countryOne.getName()} VS #{WarZoneBean.selectedWar.countryTwo.getName()}" />
-		<br/>
-		
-		<!-- insert list of weapons -->
-		
-		<h:outputLabel value="Name of war : #{WarZoneBean.selectedWar.name}"/>
-		<br/>
-		
-		<h:outputLabel value="Start of war : #{WarZoneBean.selectedWar.startDate}"/>
-		<br/>
-		
-		<h:outputLabel value="End of war : #{WarZoneBean.selectedWar.endDate}" />
-		<br/>
-		
-		<h:commandButton value="Edit" action="#{WarZoneBean.openWar(war.id)}" />
-		<br/>
-		
-		<h:commandButton value="Delete" action="#{WarZoneBean.openWar(war.id)}" />
-		<br/>
-		     
     </ui:define>
 </ui:composition>
 </html>

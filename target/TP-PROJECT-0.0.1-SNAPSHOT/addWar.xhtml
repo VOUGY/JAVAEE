@@ -10,32 +10,38 @@
 	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	    <ui:define name="content">
 	    	<h:form>
-		    	<h:outputLabel value="Name : "></h:outputLabel><h:inputText value="#{WarZoneBean.addWar.name}" /> 
+		    	<h:outputLabel value="Name : " />
+		    	<h:inputText value="#{WarZoneBean.tmpWar.name}" /> 
 		    	<br/>
 		    	
-		    	<h:outputLabel value="Description : "></h:outputLabel><h:inputText value="#{WarZoneBean.addWar.description}" /> 
+		    	<h:outputLabel value="Description : " />
+		    	<h:inputText value="#{WarZoneBean.tmpWar.description}" /> 
 		    	<br/>
 		    	
-		    	<h:outputLabel value="Start date : "></h:outputLabel><h:inputText value="#{WarZoneBean.addWar.name}" /> 
+		    	<h:outputLabel value="Start date : " />
+		    	<h:inputText value="#{WarZoneBean.tmpWar.startDate}">
+		    		<f:convertDateTime pattern="dd-MM-yyyy" />
+		    	</h:inputText> 
 		    	<br/>
 		    	
-		    	<h:outputLabel value="End date : "></h:outputLabel><h:inputText value="#{WarZoneBean.addWar.name}" /> 
+		    	<h:outputLabel value="End date : " />
+		    	<h:inputText value="#{WarZoneBean.tmpWar.endDate}">
+		    		<f:convertDateTime pattern="dd-MM-yyyy" />
+		    	</h:inputText> 
 		    	<br/>
 		    	
 		    	<h:outputLabel value="Country 1 : "></h:outputLabel>
-		    		<h:selectOneMenu value="#{WarZoneBean.countryName}">
+		    		<h:selectOneMenu value="#{WarZoneBean.tmpCountryOneName}">
 		                <f:selectItems value="#{WarZoneBean.countryNames}"/>
 		            </h:selectOneMenu>
 		    	<br/>
 		    	
 		    	<h:outputLabel value="Country 2 : "></h:outputLabel>
-		    		<h:selectOneMenu value="#{WarZoneBean.countryName}">
+		    		<h:selectOneMenu value="#{WarZoneBean.tmpCountryTwoName}">
 		                <f:selectItems value="#{WarZoneBean.countryNames}"/>
 		            </h:selectOneMenu>
 		    	<br/>
-		        <h:commandButton action="#{navigationController.showPage}" value="Validate">
-		      		<f:param name="pageId" value="warzone" />
-		   		</h:commandButton>
+		        <h:commandButton action="#{WarZoneBean.addWar()}" value="Validate" />
 	    	</h:form>
 	    </ui:define>
 	</ui:composition>

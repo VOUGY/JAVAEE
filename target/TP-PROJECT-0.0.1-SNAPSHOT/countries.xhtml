@@ -8,20 +8,18 @@
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
     <ui:define name="content">
-        <h:outputLabel value="This is the countries page"></h:outputLabel>
-        <h:dataTable value="#{WarZoneBean.countries}" var="country">
-    		<h:column>#{country.name}</h:column>
-    		<h:column>#{country.abbreviation}</h:column>
-    		<h:column>#{country.description}</h:column>
-    		<h:column>#{country.location}</h:column>
-    		<h:column>
-    			<h:commandButton value="Edit" action="#{WarZoneBean.openWar(war.id)}" />
-    		</h:column>
-    		<h:column>
-    			<h:commandButton value="Delete" action="weapons" />
-    		</h:column>				
-		</h:dataTable>
-		<h:commandButton value="+" action="addCountry" />
+    	<h:form>
+    	    <h:outputLabel value="This is the countries page"></h:outputLabel>
+        	<h:dataTable value="#{WarZoneBean.countries}" var="country">
+	    		<h:column>#{country.name}</h:column>
+	    		<h:column>#{country.abbreviation}</h:column>
+	    		<h:column>#{country.description}</h:column>
+	    		<h:column>#{country.location}</h:column>			
+			</h:dataTable>
+		    <h:commandButton action="#{navigationController.showPage}" value="+">
+		    	<f:param name="pageId" value="addCountry" />
+		    </h:commandButton>
+    	</h:form>
     </ui:define>
 </ui:composition>
 </html>

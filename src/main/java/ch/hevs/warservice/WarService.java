@@ -14,10 +14,10 @@ public interface WarService {
 	
 	// To do => Nicolas Solioz
 	
-	void AddWar();
-	void DeleteWar(long id);
-	void EditWar();
-	void FinishWar();
+	void AddWar(War war);
+	// void DeleteWar(long id); --> A war can't be deleted, because history can't be erased
+	void EditWar(War war);
+	void FinishWar(War war);
 	
 	//Views 
 	List<War> GetWars();

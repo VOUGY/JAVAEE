@@ -14,5 +14,6 @@ public interface CountryService {
 	List<Country> GetCountries();
 	
 	Country GetCountry(Long id);
+	Country GetCountryWithName(String countryName);
 
 }

@@ -40,11 +40,20 @@ public class WarZoneBean {
 	private Country selectedCountry;
 	private List<String> countryNames;
 	private String countryName;
+	
+	private String tmpCountryOneName;
+	private String tmpCountryTwoName;
 
 	// Car and Gun variable (to edit or add)
 	private Car tmpCar;
 	private Gun tmpGun;
 	private Weapon selectedWeapon;
+	
+	// War variable (to edit or add)
+	private War tmpWar;
+	
+	// Country variable (to add)
+	private Country tmpCountry;
 
 	@PostConstruct
 	public void initialize() throws NamingException {
@@ -64,8 +73,10 @@ public class WarZoneBean {
 		weapon.AddCar();
 		tmpCar = new Car();
 		tmpGun = new Gun();
+		
 		// Get all wars from database
 		this.wars = war.GetWars();
+		tmpWar = new War();
 
 		
 		// Get all countries from database
@@ -91,6 +102,7 @@ public class WarZoneBean {
 	public void UpdateData() {
 		this.weapons = weapon.GetWeapons();
 		this.countries = country.GetCountries();
+		this.wars = war.GetWars();
 	}
 
 	public String openWar(Long selectedWar) {
@@ -98,7 +110,7 @@ public class WarZoneBean {
 			InitialContext ctx = new InitialContext();
 			war = (WarService) ctx
 					.lookup("java:global/TP-PROJECT-0.0.1-SNAPSHOT/WarBean!ch.hevs.warservice.WarService");
-			this.selectedWar = war.GetWar(selectedWar);
+			tmpWar = war.GetWar(selectedWar);
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -111,6 +123,13 @@ public class WarZoneBean {
 		tmpCar = weapon.GetCar(selectedWeaponId);
 		return "editCar?faces-redirect=true";
 	}
+	
+	public String finishWar() {
+		
+		war.FinishWar(tmpWar);
+		UpdateData();
+		return "war?faces-redirect=true";
+	}
 
 	public String deleteWeapon(long selectedWeaponId) {
 		weapon.DeleteWeapon(selectedWeaponId);
@@ -119,13 +138,26 @@ public class WarZoneBean {
 	}
 
 	public String addWar() {
+		tmpWar.setCountryOne(country.GetCountryWithName(tmpCountryOneName));
+		tmpWar.setCountryTwo(country.GetCountryWithName(tmpCountryTwoName));
+		war.AddWar(tmpWar);
+		UpdateData();
+		tmpWar = new War();
 		return "warzone?faces-redirect=true";
+	}
+	
+	public Country getCountryWithName(String countryName) {
+		return country.GetCountryWithName(countryName);
 	}
 
 	public List<War> getWars() {
 		return wars;
 	}
 
+	public void setWars(List<War> wars) {
+		this.wars = wars;
+	}
+	
 	public String editCar() {
 		weapon.EditCar(tmpCar);
 		tmpCar = new Car();
@@ -136,12 +168,18 @@ public class WarZoneBean {
 	public String addCar() {
 		weapon.AddCar(tmpCar);
 		UpdateData();
+		tmpCar = new Car();
 		return "weapons?faces-redirect=true";
 	}
-
-	public void setWars(List<War> wars) {
-		this.wars = wars;
+	
+	public String editWar() {
+		war.EditWar(tmpWar);
+		tmpWar = new War();
+		UpdateData();
+		return "warzone?faces-redirect=true";
 	}
+
+
 
 	public List<Country> getCountries() {
 		return countries;
@@ -173,12 +211,6 @@ public class WarZoneBean {
 
 	public void setWeapon(WeaponService weapon) {
 		this.weapon = weapon;
-	}
-
-	public String[][] getWarringCountries() {
-		String[][] warringCountries = null;
-
-		return warringCountries;
 	}
 
 	public Country getSelectedCountry() {
@@ -220,5 +252,77 @@ public class WarZoneBean {
 	public void setTmpGun(Gun tmpGun) {
 		this.tmpGun = tmpGun;
 	}
+
+	public War getTmpWar() {
+		return tmpWar;
+	}
+
+	public void setTmpWar(War tmpWar) {
+		this.tmpWar = tmpWar;
+	}
+
+	public Country getTmpCountry() {
+		return tmpCountry;
+	}
+
+	public void setTmpCountry(Country tmpCountry) {
+		this.tmpCountry = tmpCountry;
+	}
+
+	public WarService getWar() {
+		return war;
+	}
+
+	public void setWar(WarService war) {
+		this.war = war;
+	}
+
+	public CountryService getCountry() {
+		return country;
+	}
+
+	public void setCountry(CountryService country) {
+		this.country = country;
+	}
+
+	public List<String> getCountryNames() {
+		return countryNames;
+	}
+
+	public void setCountryNames(List<String> countryNames) {
+		this.countryNames = countryNames;
+	}
+
+	public String getCountryName() {
+		return countryName;
+	}
+
+	public void setCountryName(String countryName) {
+		this.countryName = countryName;
+	}
+
+	public String getTmpCountryOneName() {
+		return tmpCountryOneName;
+	}
+
+	public void setTmpCountryOneName(String tmpCountryOneName) {
+		this.tmpCountryOneName = tmpCountryOneName;
+	}
+
+	public String getTmpCountryTwoName() {
+		return tmpCountryTwoName;
+	}
+
+	public void setTmpCountryTwoName(String tmpCountryTwoName) {
+		this.tmpCountryTwoName = tmpCountryTwoName;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

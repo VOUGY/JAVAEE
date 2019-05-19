@@ -1,6 +1,9 @@
 package ch.hevs.warservice;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -26,26 +29,21 @@ public class WarBean implements WarService {
 	private EntityManager em;
 
 	@Override
-	public void AddWar() {
-		// TODO Auto-generated method stub
+	public void EditWar(War war) {
+		em.merge(war);
 		
+	}
+	
+	@Override
+	public void AddWar(War war) {
+		em.persist(war);
 	}
 
 	@Override
-	public void DeleteWar(long id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void EditWar() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void FinishWar() {
-		// TODO Auto-generated method stub
+	public void FinishWar(War war) {
+	    Date today = new Date();
+	    war.setEndDate(today);
+	    em.merge(war);
 		
 	}
 	
