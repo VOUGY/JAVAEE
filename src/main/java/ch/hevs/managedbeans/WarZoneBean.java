@@ -77,12 +77,12 @@ public class WarZoneBean {
 		// Get all wars from database
 		this.wars = war.GetWars();
 		tmpWar = new War();
-
+		
 		
 		// Get all countries from database
 		this.countries = country.GetCountries();
 		this.countryNames = new ArrayList<String>();
-
+		
 		for (int i = 0; i < this.countries.size(); i++) {
 			this.countryNames.add(this.countries.get(i).getName());
 		}
@@ -105,6 +105,12 @@ public class WarZoneBean {
 		this.wars = war.GetWars();
 	}
 
+	public void AddData()
+	{
+		weapon.AddCar();
+		weapon.AddGun();
+		country.AddCountries();
+	}
 	public String openWar(Long selectedWar) {
 		try {
 			InitialContext ctx = new InitialContext();

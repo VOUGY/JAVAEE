@@ -74,11 +74,23 @@ public class Country {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+	public List<Weapon> getWeapons() {
+		return weapons;
+	}
+	public void setWeapons(List<Weapon> weapons) {
+		this.weapons = weapons;
+	}
+	public List<War> getWars() {
+		return wars;
+	}
+	public void setWars(List<War> wars) {
+		this.wars = wars;
+	}
 
 	//methods
 
 	// constructors
+	
 	
 	public Country (String name, String abbreviation, String location, String description) {
 		this.name = name;

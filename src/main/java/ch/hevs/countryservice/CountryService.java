@@ -15,5 +15,5 @@ public interface CountryService {
 	
 	Country GetCountry(Long id);
 	Country GetCountryWithName(String countryName);
-
+	void AddCountries();
 }
