@@ -82,7 +82,9 @@ public class WarZoneBean {
 		for (int i = 0; i < this.countries.size(); i++) {
 			this.countryNames.add(this.countries.get(i).getName());
 		}
-		//InitializeWar();
+		
+		
+	//	InitializeWar();
 	}
 
 	public void UpdateData() {
@@ -94,7 +96,12 @@ public class WarZoneBean {
 	public void InitializeWar() {
 		weapon.AddCars();
 		weapon.AddGuns();
-		//country.AddCountries();
+		country.AddCountries();
+		country.AddWeaponCountry(country.GetCountries().get(0), weapon.GetWeapons().get(0));
+		country.AddWeaponCountry(country.GetCountries().get(0), weapon.GetWeapons().get(1));
+		country.AddWeaponCountry(country.GetCountries().get(1), weapon.GetWeapons().get(2));
+		country.AddWeaponCountry(country.GetCountries().get(2), weapon.GetWeapons().get(3));
+		country.AddWeaponCountry(country.GetCountries().get(3), weapon.GetWeapons().get(2));
 		
 	}
 

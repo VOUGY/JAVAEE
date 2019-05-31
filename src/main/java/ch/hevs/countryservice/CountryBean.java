@@ -39,7 +39,6 @@ public class CountryBean implements CountryService {
 		country.setAbbreviation("FR");
 		country.setLocation("Europe");
 		country.setDescription("Liberté, égalité, fraternité");
-		
 		Country country2 = new Country();
 		country2.setName("Germany");
 		country2.setAbbreviation("DE");
@@ -75,6 +74,6 @@ public class CountryBean implements CountryService {
 	public void AddWeaponCountry(Country country, Weapon weapon)
 	{
 		country.getWeapons().add(weapon);
-		em.persist(country);
+		em.merge(country);
 	}
 }
