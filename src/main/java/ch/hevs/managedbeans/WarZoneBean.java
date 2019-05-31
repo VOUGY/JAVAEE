@@ -82,6 +82,7 @@ public class WarZoneBean {
 		for (int i = 0; i < this.countries.size(); i++) {
 			this.countryNames.add(this.countries.get(i).getName());
 		}
+		//InitializeWar();
 	}
 
 	public void UpdateData() {
@@ -90,10 +91,10 @@ public class WarZoneBean {
 		this.wars = war.GetWars();
 	}
 
-	public void AddData() {
-		weapon.AddCar();
-		weapon.AddGun();
-		country.AddCountries();
+	public void InitializeWar() {
+		weapon.AddCars();
+		weapon.AddGuns();
+		//country.AddCountries();
 		
 	}
 
@@ -171,6 +172,7 @@ public class WarZoneBean {
 		return "warzone?faces-redirect=true";
 	}
 
+	
 	public void setWars(List<War> wars) {
 		this.wars = wars;
 	}

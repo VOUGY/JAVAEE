@@ -35,6 +35,11 @@
 	    		<h:column>#{weapon.name}</h:column>		
 			</h:dataTable>
 			
+				<h:outputLabel value="Weapons of #{WarZoneBean.tmpWar.countryTwo.name}" />
+			<h:dataTable value="#{WarZoneBean.tmpWar.countryTwo.weapons}" var="weapon">
+	    		<h:column>#{weapon.name}</h:column>		
+			</h:dataTable>
+			
 			<h:commandButton value="Finish war" action="#{WarZoneBean.finishWar}" />			     
     	</h:form>
         

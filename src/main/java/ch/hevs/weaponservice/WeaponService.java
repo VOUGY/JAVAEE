@@ -13,9 +13,9 @@ public interface WeaponService {
 	
 	// Add Car or Gun 
 		//void AddWeapon(Weapon weapon);
-	void AddCar();
+	void AddCars();
 	void AddCar(Car car);
-	void AddGun();
+	void AddGuns();
 	void AddGun(Gun gun);
 	
 	//Delete Weapon 
