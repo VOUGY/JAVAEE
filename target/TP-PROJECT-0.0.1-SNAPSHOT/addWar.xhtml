@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core">
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
     
     <body>
 	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
@@ -19,9 +20,10 @@
 		    	<br/>
 		    	
 		    	<h:outputLabel value="Start date : " />
+		    	<p:calendar value="#WarZoneBean.tmpWar.startDate}"></p:calendar>
 		    	<h:inputText value="#{WarZoneBean.tmpWar.startDate}">
 		    		<f:convertDateTime pattern="dd-MM-yyyy" />
-		    	</h:inputText> 
+		    	</h:inputText>
 		    	<br/>
 		    	
 		    	<h:outputLabel value="End date : " />
@@ -42,6 +44,7 @@
 		            </h:selectOneMenu>
 		    	<br/>
 		        <h:commandButton action="#{WarZoneBean.addWar()}" value="Validate" />
+		        <h:commandButton rendered="true" action="#{WarZoneBean.backToWarZone}" value="Back" />
 	    	</h:form>
 	    </ui:define>
 	</ui:composition>

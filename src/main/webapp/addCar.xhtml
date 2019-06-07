@@ -43,7 +43,13 @@
 					<td></td>
 					<td><h:commandButton value="Insert" action="#{WarZoneBean.addCar}" /></td>
 				</tr>
+				<tr>
+					<td>
+						<h:commandButton rendered="true" action="#{WarZoneBean.backToWeapons}" value="Back" />
+					</td>
+				</tr>
 			</table>
+			
 		</h:form>
 	</ui:define>
 </ui:composition>

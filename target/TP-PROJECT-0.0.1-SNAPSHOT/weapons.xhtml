@@ -14,12 +14,9 @@
     	<h:form>
 	        <h:outputLabel value="This is the weapons page"/>
 	        
-	        	 <h:commandButton action="#{navigationController.showPage}" value="add a Car">
-			      		<f:param name="pageId" value="addCar" />
-			 </h:commandButton>
-			  <h:commandButton action="#{navigationController.showPage}" value="add a Gun" disabled="true">
-			      		<f:param name="pageId" value="addGun" />
-			 </h:commandButton>
+	        <h:commandButton action="#{navigationController.AddCar}" value="add a Car" />
+			<h:commandButton action="#{navigationController.AddGun}" value="add a Gun" disabled="true" />
+			
 	        <h:dataTable value="#{WarZoneBean.weapons}" var="weapon"
 	        	styleClass="order-table"
     			headerClass="order-table-header"
@@ -48,9 +45,10 @@
 	    		</h:column>
 	    		<h:column>
 	    			<f:facet name="header">Delete</f:facet>
-	    			<h:commandButton value="Delete" action="#{WarZoneBean.deleteWeapon(weapon.id)}" />
+	    			<h:commandButton value="Delete" action="#{WarZoneBean.deleteWeapon(weapon.id)}" />    			
 	    		</h:column>				
 			</h:dataTable>
+			<h:commandButton rendered="true" action="#{WarZoneBean.backToWarZone}" value="Back" />
    		</h:form>
     </ui:define>
 </ui:composition>

@@ -40,7 +40,9 @@
 	    		<h:column>#{weapon.name}</h:column>		
 			</h:dataTable>
 			
-			<h:commandButton value="Finish war" action="#{WarZoneBean.finishWar}" />			     
+			<h:commandButton value="Finish war" action="#{WarZoneBean.finishWar}" />
+			<h:commandButton rendered="true" action="#{WarZoneBean.backToWarZone}" value="Back" />
+					     
     	</h:form>
         
     </ui:define>

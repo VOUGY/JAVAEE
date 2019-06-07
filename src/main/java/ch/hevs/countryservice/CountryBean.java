@@ -76,4 +76,5 @@ public class CountryBean implements CountryService {
 		country.getWeapons().add(weapon);
 		em.merge(country);
 	}
+
 }

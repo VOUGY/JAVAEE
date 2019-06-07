@@ -5,7 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
-
+	
 	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 		<ui:define name="content">
 			<h:form>
@@ -16,15 +16,9 @@
 	    				<h:commandButton rendered="true" action="#{WarZoneBean.openWar(war.id)}" value="Details" />
 	    			</h:column>			
 				</h:dataTable>
-		        <h:commandButton action="#{navigationController.showPage}" value="Weapons">
-		      		<f:param name="pageId" value="weapons" />
-		   		</h:commandButton>
-		        <h:commandButton action="#{navigationController.showPage}" value="Countries">
-		      		<f:param name="pageId" value="countries" />
-		   		</h:commandButton>
-		        <h:commandButton action="#{navigationController.showPage}" value="New War">
-		      		<f:param name="pageId" value="addWar" />
-		   		</h:commandButton>
+		        <h:commandButton action="#{navigationController.Weapons}" value="Weapons" />
+		        <h:commandButton action="#{navigationController.Countries}" value="Countries" />
+		        <h:commandButton action="#{navigationController.AddWar}" value="New War" />
 			</h:form>
 		</ui:define>
 	</ui:composition>

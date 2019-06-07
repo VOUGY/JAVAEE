@@ -105,6 +105,7 @@ public class WarZoneBean {
 		
 	}
 
+
 	public String openWar(Long selectedWar) {
 		try {
 			InitialContext ctx = new InitialContext();
@@ -129,10 +130,24 @@ public class WarZoneBean {
 	public String addWar() {
 		tmpWar.setCountryOne(country.GetCountryWithName(tmpCountryOneName));
 		tmpWar.setCountryTwo(country.GetCountryWithName(tmpCountryTwoName));
-		war.AddWar(tmpWar);
-		UpdateData();
+		System.out.println(tmpWar.getCountryOne().getId());
+		war.AddWar(tmpWar);	
 		tmpWar = new War();
+		UpdateData();
 		return "warzone?faces-redirect=true";
+	}
+	
+	
+	
+	public String backToWarZone() {
+		this.setTmpWar(new War());
+		return "warzone?faces-redirect=true";
+	}
+	
+	public String backToWeapons() {
+		this.setTmpCar(new Car());
+		this.setTmpGun(new Gun());
+		return "weapons?faces-redirect=true";
 	}
 	
 	

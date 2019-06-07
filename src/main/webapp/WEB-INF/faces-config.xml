@@ -4,10 +4,66 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
+    
+    <!-- NavigationController and faces-config configured based on this link : https://www.mkyong.com/jsf2/jsf-form-action-navigation-rule-example/ -->
 	<managed-bean>
 		<managed-bean-name>WarZoneBean</managed-bean-name>
 		<managed-bean-class>ch.hevs.managedbeans.WarZoneBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	
+	<navigation-rule>
+		<from-view-id>home.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{NavigationController.WarZone}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>warzone.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>warzone.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{NavigationController.Weapons}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>weapons.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-action>#{NavigationController.Countries}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>countries.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-action>#{NavigationController.AddWar}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>addWar.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>weapons.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{NavigationController.AddCar}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>addCar.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-action>#{NavigationController.AddGun}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>addGun.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>countries.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{NavigationController.AddCountry}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>addCountry.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>
