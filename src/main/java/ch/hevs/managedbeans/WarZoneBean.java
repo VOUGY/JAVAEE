@@ -91,7 +91,7 @@ public class WarZoneBean {
 		}
 		
 		
-		InitializeWar();
+		//InitializeWar();
 		UpdateData();
 	}
 
@@ -130,11 +130,17 @@ public class WarZoneBean {
 
 	}
 	public String addWar() {
+		
+		if(tmpWar.getName() == "" || tmpWar.getDescription() == "" || tmpWar.getStartDate() == null)
+		{
+			return "addWar?faces-redirect=true";
+		}
+		
 		tmpWar.setCountryOne(country.GetCountryWithName(tmpCountryOneName));
 		tmpWar.setCountryTwo(country.GetCountryWithName(tmpCountryTwoName));
 		System.out.println(tmpWar.getCountryOne().getId());
 		war.AddWar(tmpWar);	
-		tmpWar = new War();
+		this.setTmpWar(new War());
 		UpdateData();
 		return "warzone?faces-redirect=true";
 	}

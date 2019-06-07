@@ -12,7 +12,7 @@
 	    <ui:define name="content">
 	    	<h:form>
 		    	<h:outputLabel value="Name : " />
-		    	<h:inputText value="#{WarZoneBean.tmpWar.name}" /> 
+		    	<h:inputText value="#{WarZoneBean.tmpWar.name}"/> 
 		    	<br/>
 		    	
 		    	<h:outputLabel value="Description : " />
@@ -20,7 +20,6 @@
 		    	<br/>
 		    	
 		    	<h:outputLabel value="Start date : " />
-		    	<p:calendar value="#WarZoneBean.tmpWar.startDate}"></p:calendar>
 		    	<h:inputText value="#{WarZoneBean.tmpWar.startDate}">
 		    		<f:convertDateTime pattern="dd-MM-yyyy" />
 		    	</h:inputText>
