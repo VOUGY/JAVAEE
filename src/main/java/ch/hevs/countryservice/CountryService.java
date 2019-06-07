@@ -16,6 +16,7 @@ public interface CountryService {
 	
 	Country GetCountry(Long id);
 	Country GetCountryWithName(String countryName);
+	void AddCountriesWithWeapons();
 	void AddWeaponCountry(Country country, Weapon weapon);
 	void AddCountries();
 

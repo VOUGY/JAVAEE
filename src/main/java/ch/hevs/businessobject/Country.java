@@ -108,6 +108,15 @@ public class Country {
 		
 	}
 	
+	
+	// helper methods
+	public void addWeapon(Weapon w1) {
+		this.weapons.add(w1);
+		List<Country> countries =w1.getCountries();
+		countries.add(this);
+		w1.setCountries(countries);
+	}
+	
 	@PostPersist
 	public void acknowledgePersist() {
 		System.out.println("country persisted!!!");

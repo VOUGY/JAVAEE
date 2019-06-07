@@ -2,7 +2,10 @@ package ch.hevs.countryservice;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -10,9 +13,13 @@ import ch.hevs.businessobject.Car;
 import ch.hevs.businessobject.Country;
 import ch.hevs.businessobject.War;
 import ch.hevs.businessobject.Weapon;
+import ch.hevs.weaponservice.WeaponService;
 
 @Stateless
 public class CountryBean implements CountryService {
+	
+	@EJB
+	private WeaponService weapon;
 	
 	@PersistenceContext(name = "CountryPU")
 	private EntityManager em;
@@ -64,17 +71,26 @@ public class CountryBean implements CountryService {
 		country5.setLocation("Asia");
 		
 		
-		em.persist(country);
-		em.persist(country2);
-		em.persist(country3);
-		em.persist(country4);
-		em.persist(country5);
+		em.merge(country);
+		em.merge(country2);
+		em.merge(country3);
+		em.merge(country4);
+		em.merge(country5);
 		
 	}
 	public void AddWeaponCountry(Country country, Weapon weapon)
 	{
-		country.getWeapons().add(weapon);
+		country.addWeapon(weapon);
 		em.merge(country);
 	}
 
+	@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
+	public void AddCountriesWithWeapons() {
+		AddCountries();
+		AddWeaponCountry(GetCountries().get(0), weapon.GetWeapons().get(0));
+	    AddWeaponCountry(GetCountries().get(0), weapon.GetWeapons().get(1));
+		AddWeaponCountry(GetCountries().get(1), weapon.GetWeapons().get(2));
+		AddWeaponCountry(GetCountries().get(1), weapon.GetWeapons().get(3));
+	}
+	
 }
