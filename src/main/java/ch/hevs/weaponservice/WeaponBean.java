@@ -7,6 +7,8 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
@@ -20,14 +22,15 @@ import ch.hevs.businessobject.War;
 import ch.hevs.businessobject.Weapon;
 
 @Stateless
-public class WeaponBean implements WeaponService {
+@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
 
+public class WeaponBean implements WeaponService {
 	
 	@PersistenceContext(name = "WarPU")
 	private EntityManager em;
 
 
-	@Override
+	
 	public int DeleteWeapon(long weaponId) {
 		int delete = em.createQuery("DELETE FROM Weapon w where w.id = :id").setParameter("id", weaponId)
 				.executeUpdate();
@@ -66,16 +69,36 @@ public class WeaponBean implements WeaponService {
 		em.persist(car);
 	}
 
-	public void AddCar() {
+	public void AddCars() {
 
 		Car cartmp = new Car();
-		cartmp.setDescription("New car");
-		cartmp.setWheels(4);
-		cartmp.setName("CarName");
-		cartmp.setQuantity(10);
-		cartmp.setStrength(10);
-		
+		cartmp.setDescription("Best of the best of the best tanks");
+		cartmp.setWheels(0);
+		cartmp.setName("Tank");
+		cartmp.setQuantity(100);
+		cartmp.setStrength(10000000);
 		em.persist(cartmp);
+		
+		cartmp = new Car();
+		cartmp.setDescription("Transport");
+		cartmp.setWheels(8);
+		cartmp.setName("Puch");
+		cartmp.setQuantity(1000);
+		cartmp.setStrength(1);
+		
+		cartmp = new Car();
+		cartmp.setDescription("Transport");
+		cartmp.setWheels(2);
+		cartmp.setName("Moto");
+		cartmp.setQuantity(1000);
+		cartmp.setStrength(1);
+		
+		cartmp = new Car();
+		cartmp.setDescription("Transport");
+		cartmp.setWheels(2);
+		cartmp.setName("Bike");
+		cartmp.setQuantity(100);
+		cartmp.setStrength(0);
 	}
 
 	@Override
@@ -83,13 +106,44 @@ public class WeaponBean implements WeaponService {
 		em.persist(gun);
 	}
 
-	public void AddGun() {
+	public void AddGuns() {
 		Gun guntmp = new Gun();
 		guntmp.setDescription("New gun");
 		guntmp.setIsAutomatic(true);
 		guntmp.setName("Ak47");
 		guntmp.setQuantity(1000);
 		guntmp.setStrength(4);
+		em.persist(guntmp);
+		
+		guntmp.setDescription("45mm / 32 ");
+		guntmp.setIsAutomatic(false);
+		guntmp.setName("Revolver");
+		guntmp.setQuantity(4000);
+		guntmp.setStrength(1);
+		em.persist(guntmp);
+		
+		guntmp = new Gun();
+		guntmp.setDescription("Sniper");
+		guntmp.setIsAutomatic(false);
+		guntmp.setName("S112-sp03");
+		guntmp.setQuantity(1000	);
+		guntmp.setStrength(100);
+		em.persist(guntmp);
+		
+		guntmp = new Gun();
+		guntmp.setDescription("Boum");
+		guntmp.setIsAutomatic(false);
+		guntmp.setName("Grenades");
+		guntmp.setQuantity(100000);
+		guntmp.setStrength(10);
+		em.persist(guntmp);
+		
+		guntmp = new Gun();
+		guntmp.setDescription("Shhhh");
+		guntmp.setIsAutomatic(true);
+		guntmp.setName("Mines");
+		guntmp.setQuantity(10000);
+		guntmp.setStrength(1000);
 		em.persist(guntmp);
 	}
 

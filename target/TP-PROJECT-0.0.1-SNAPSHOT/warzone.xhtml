@@ -13,7 +13,7 @@
 				<h:dataTable value="#{WarZoneBean.wars}" var="war">
 	    			<h:column>#{war.description}</h:column>
 	    			<h:column>
-	    				<h:commandButton rendered="true" action="#{WarZoneBean.openWar(war.id)}" />
+	    				<h:commandButton rendered="true" action="#{WarZoneBean.openWar(war.id)}" value="Details" />
 	    			</h:column>			
 				</h:dataTable>
 		        <h:commandButton action="#{navigationController.showPage}" value="Weapons">
@@ -22,7 +22,7 @@
 		        <h:commandButton action="#{navigationController.showPage}" value="Countries">
 		      		<f:param name="pageId" value="countries" />
 		   		</h:commandButton>
-		        <h:commandButton action="#{navigationController.showPage}" value="+">
+		        <h:commandButton action="#{navigationController.showPage}" value="New War">
 		      		<f:param name="pageId" value="addWar" />
 		   		</h:commandButton>
 			</h:form>

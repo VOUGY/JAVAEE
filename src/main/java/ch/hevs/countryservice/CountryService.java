@@ -6,6 +6,7 @@ import javax.ejb.Local;
 
 import ch.hevs.businessobject.Country;
 import ch.hevs.businessobject.War;
+import ch.hevs.businessobject.Weapon;
 
 @Local
 public interface CountryService {
@@ -15,5 +16,6 @@ public interface CountryService {
 	
 	Country GetCountry(Long id);
 	Country GetCountryWithName(String countryName);
-
+	void AddWeaponCountry(Country country, Weapon weapon);
+	void AddCountries();
 }
