@@ -80,7 +80,7 @@ public class WarZoneBean {
 
 		// Get all wars from database
 		this.wars = war.GetWars();
-		tmpWar = new War();
+		tmpWar = war.NewWar();
 
 		// Get all countries from database
 		this.countries = country.GetCountries();
@@ -148,13 +148,12 @@ public class WarZoneBean {
 	
 	
 	public String backToWarZone() {
-		this.setTmpWar(new War());
+		this.setTmpWar(war.NewWar());
 		return "warzone?faces-redirect=true";
 	}
 	
 	public String backToWeapons() {
-		this.setTmpCar(new Car());
-		this.setTmpGun(new Gun());
+		this.setTmpCar(weapon.NewCar());
 		return "weapons?faces-redirect=true";
 	}
 	
@@ -197,7 +196,7 @@ public class WarZoneBean {
 
 	public String editWar() {
 		war.EditWar(tmpWar);
-		tmpWar = new War();
+		tmpWar = war.NewWar();
 		UpdateData();
 		return "warzone?faces-redirect=true";
 	}
