@@ -29,5 +29,5 @@ public interface WeaponService {
 	List<Weapon> GetWeapons();
 	Weapon GetWeapon(long id);
 	Car GetCar(long carId);
-
+	Car NewCar();
 }

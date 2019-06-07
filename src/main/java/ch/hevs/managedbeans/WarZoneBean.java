@@ -8,6 +8,12 @@ import javax.annotation.PostConstruct;
 import javax.faces.event.ValueChangeEvent;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 
 import ch.hevs.businessobject.Car;
 import ch.hevs.businessobject.Country;
@@ -55,6 +61,7 @@ public class WarZoneBean {
 	// Country variable (to add)
 	private Country tmpCountry;
 
+	
 	@PostConstruct
 	public void initialize() throws NamingException {
 
@@ -69,7 +76,7 @@ public class WarZoneBean {
 
 		// Get all weapons from database
 		this.weapons = weapon.GetWeapons();
-		tmpCar = new Car();
+		tmpCar = weapon.NewCar();
 
 		// Get all wars from database
 		this.wars = war.GetWars();
@@ -84,7 +91,8 @@ public class WarZoneBean {
 		}
 		
 		
-	//	InitializeWar();
+		InitializeWar();
+		UpdateData();
 	}
 
 	public void UpdateData() {
@@ -96,13 +104,7 @@ public class WarZoneBean {
 	public void InitializeWar() {
 		weapon.AddCars();
 		weapon.AddGuns();
-		country.AddCountries();
-		country.AddWeaponCountry(country.GetCountries().get(0), weapon.GetWeapons().get(0));
-		country.AddWeaponCountry(country.GetCountries().get(0), weapon.GetWeapons().get(1));
-		country.AddWeaponCountry(country.GetCountries().get(1), weapon.GetWeapons().get(2));
-		country.AddWeaponCountry(country.GetCountries().get(2), weapon.GetWeapons().get(3));
-		country.AddWeaponCountry(country.GetCountries().get(3), weapon.GetWeapons().get(2));
-		
+		country.AddCountriesWithWeapons();
 	}
 
 	public String openWar(Long selectedWar) {
@@ -143,14 +145,14 @@ public class WarZoneBean {
 
 	public String editCar() {
 		weapon.EditCar(tmpCar);
-		tmpCar = new Car();
+		tmpCar = weapon.NewCar();
 		UpdateData();
 		return "weapons?faces-redirect=true";
 	}
 
 	public String addCar() {
 		weapon.AddCar(tmpCar);
-		tmpCar = new Car();
+		tmpCar = weapon.NewCar();
 		UpdateData();
 		return "weapons?faces-redirect=true";
 

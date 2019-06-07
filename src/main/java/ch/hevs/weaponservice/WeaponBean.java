@@ -147,5 +147,10 @@ public class WeaponBean implements WeaponService {
 		em.persist(guntmp);
 	}
 
+	@Override
+	public Car NewCar() {
+		// TODO Auto-generated method stub
+		return new Car();
+	}
 	
 }
