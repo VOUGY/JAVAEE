@@ -22,12 +22,7 @@ public interface WarService {
 	//Views 
 	List<War> GetWars();
 	War GetWar(Long id);
+	War NewWar();
 		
-	// To do => GV and NS	
-	
-	/*
-	 * void EditCountry();
-	 * void AddCountry();
-	 */
 	
 }

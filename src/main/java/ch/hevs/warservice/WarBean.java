@@ -55,6 +55,12 @@ public class WarBean implements WarService {
 	public War GetWar(Long id) {
 		return (War) em.createQuery("FROM War WHERE id = " + id).getSingleResult();
 	}
+
+	@Override
+	public War NewWar() {
+		// TODO Auto-generated method stub
+		return new War();
+	}
 		
 
 
