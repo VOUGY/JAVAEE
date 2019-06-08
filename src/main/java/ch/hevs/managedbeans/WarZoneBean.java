@@ -90,6 +90,8 @@ public class WarZoneBean {
 			this.countryNames.add(this.countries.get(i).getName());
 		}
 		
+		tmpCountry = country.NewCountry();
+		
 		
 		//InitializeWar();
 		UpdateData();
@@ -147,6 +149,7 @@ public class WarZoneBean {
 	
 	
 	public String backToCountries() {
+		this.setTmpCountry(country.NewCountry());
 		return "countries?faces-redirect?true";
 	}
 	public String backToWarZone() {
@@ -199,6 +202,19 @@ public class WarZoneBean {
 
 	public Country getCountryWithName(String countryName) {
 		return country.GetCountryWithName(countryName);
+	}
+	
+	public String addCountry() {
+		
+		if(tmpCountry.getName() == "" || tmpCountry.getDescription() == "" || tmpCountry.getAbbreviation() == "" || tmpCountry.getLocation() == "")
+		{
+			return "addCountry?faces-redirect=true";
+		}
+
+		country.AddCountry(tmpCountry);
+		this.setTmpCountry(country.NewCountry());
+		UpdateData();
+		return "countries?faces-redirect=true";
 	}
 
 	public List<War> getWars() {

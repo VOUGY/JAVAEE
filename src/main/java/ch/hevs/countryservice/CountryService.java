@@ -19,5 +19,8 @@ public interface CountryService {
 	void AddCountriesWithWeapons();
 	void AddWeaponCountry(Country country, Weapon weapon);
 	void AddCountries();
+	void AddCountry(Country country);
+	
+	Country NewCountry();
 
 }

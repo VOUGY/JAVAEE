@@ -10,7 +10,25 @@
     <ui:define name="content">
     	<h:form>
     		<h:outputLabel value="Add a country here"></h:outputLabel>
-        	<h:commandButton rendered="true" action="#{WarZoneBean.backToCountries}" value="Back" />
+    		
+    		<h:outputLabel value="Name : " />
+		    <h:inputText value="#{WarZoneBean.tmpCountry.name}"/> 
+		    <br/>
+		    
+		    <h:outputLabel value="Abbreviation : " />
+		    <h:inputText value="#{WarZoneBean.tmpCountry.abbreviation}"/> 
+		    <br/>
+		    
+		    <h:outputLabel value="Description : " />
+		    <h:inputText value="#{WarZoneBean.tmpCountry.description}"/> 
+		    <br/>
+		    
+		    <h:outputLabel value="Location : " />
+		    <h:inputText value="#{WarZoneBean.tmpCountry.location}"/> 
+		    <br/>
+		    	
+		    <h:commandButton rendered="true" action="#{WarZoneBean.addCountry}" value="Insert" />
+        	<h:commandButton rendered="true" action="#{WarZoneBean.backToCountries}" value="Back" immediate="true"/>
     	</h:form>
     </ui:define>
 </ui:composition>

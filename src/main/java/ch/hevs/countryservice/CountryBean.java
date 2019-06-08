@@ -83,6 +83,11 @@ public class CountryBean implements CountryService {
 		country.addWeapon(weapon);
 		em.merge(country);
 	}
+	
+	@Override
+	public void AddCountry(Country country) {
+		em.persist(country);
+	}
 
 	@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
 	public void AddCountriesWithWeapons() {
@@ -93,4 +98,9 @@ public class CountryBean implements CountryService {
 		AddWeaponCountry(GetCountries().get(1), weapon.GetWeapons().get(3));
 	}
 	
+	@Override
+	public Country NewCountry() {
+		// TODO Auto-generated method stub
+		return new Country();
+	}
 }
