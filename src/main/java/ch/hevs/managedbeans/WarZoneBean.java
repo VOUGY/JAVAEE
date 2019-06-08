@@ -83,13 +83,7 @@ public class WarZoneBean {
 		tmpWar = war.NewWar();
 
 		// Get all countries from database
-		this.countries = country.GetCountries();
-		this.countryNames = new ArrayList<String>();
-
-		for (int i = 0; i < this.countries.size(); i++) {
-			this.countryNames.add(this.countries.get(i).getName());
-		}
-		
+		refreshCountries();		
 		tmpCountry = country.NewCountry();
 		
 		
@@ -214,6 +208,7 @@ public class WarZoneBean {
 		country.AddCountry(tmpCountry);
 		this.setTmpCountry(country.NewCountry());
 		UpdateData();
+		refreshCountries();
 		return "countries?faces-redirect=true";
 	}
 
@@ -367,6 +362,15 @@ public class WarZoneBean {
 
 	public void setTmpCountryTwoName(String tmpCountryTwoName) {
 		this.tmpCountryTwoName = tmpCountryTwoName;
+	}
+	
+	public void refreshCountries() {
+
+		this.countries = country.GetCountries();
+		this.countryNames = new ArrayList<String>();
+			for (int i = 0; i < this.countries.size(); i++) {
+				this.countryNames.add(this.countries.get(i).getName());
+			}
 	}
 
 }
