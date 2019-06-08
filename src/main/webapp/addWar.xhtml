@@ -43,7 +43,7 @@
 		            </h:selectOneMenu>
 		    	<br/>
 		        <h:commandButton action="#{WarZoneBean.addWar()}" value="Validate" />
-		        <h:commandButton rendered="true" action="#{WarZoneBean.backToWarZone}" value="Back" />
+		        <h:commandButton rendered="true" action="#{WarZoneBean.backToWarZone}" value="Back" immediate="true"/>
 	    	</h:form>
 	    </ui:define>
 	</ui:composition>
