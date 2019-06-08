@@ -30,14 +30,14 @@
 			</h:outputLabel>
 			<br/>
 			
-			<h:outputLabel value="Weapons of #{WarZoneBean.tmpWar.countryOne.name}" />
+			<h:outputLabel value="Weapons of #{WarZoneBean.tmpWar.countryOne.name} :" />
 			<h:dataTable value="#{WarZoneBean.tmpWar.countryOne.weapons}" var="weapon">
-	    		<h:column>#{weapon.name}</h:column>		
+				<h:column>- #{weapon.name}</h:column>
 			</h:dataTable>
 			
-				<h:outputLabel value="Weapons of #{WarZoneBean.tmpWar.countryTwo.name}" />
+			<h:outputLabel value="Weapons of #{WarZoneBean.tmpWar.countryTwo.name} :" />
 			<h:dataTable value="#{WarZoneBean.tmpWar.countryTwo.weapons}" var="weapon">
-	    		<h:column>#{weapon.name}</h:column>		
+	    		<h:column>- #{weapon.name}</h:column>		
 			</h:dataTable>
 			
 			<h:commandButton value="Finish war" action="#{WarZoneBean.finishWar}" />

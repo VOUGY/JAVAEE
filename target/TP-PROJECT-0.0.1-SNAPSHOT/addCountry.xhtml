@@ -9,26 +9,31 @@
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
     <ui:define name="content">
     	<h:form>
-    		<h:outputLabel value="Add a country here"></h:outputLabel>
-    		
-    		<h:outputLabel value="Name : " />
-		    <h:inputText value="#{WarZoneBean.tmpCountry.name}"/> 
-		    <br/>
-		    
-		    <h:outputLabel value="Abbreviation : " />
-		    <h:inputText value="#{WarZoneBean.tmpCountry.abbreviation}"/> 
-		    <br/>
-		    
-		    <h:outputLabel value="Description : " />
-		    <h:inputText value="#{WarZoneBean.tmpCountry.description}"/> 
-		    <br/>
-		    
-		    <h:outputLabel value="Location : " />
-		    <h:inputText value="#{WarZoneBean.tmpCountry.location}"/> 
-		    <br/>
-		    	
-		    <h:commandButton rendered="true" action="#{WarZoneBean.addCountry}" value="Insert" />
-        	<h:commandButton rendered="true" action="#{WarZoneBean.backToCountries}" value="Back" immediate="true"/>
+    		<table>
+    			<tr>
+					<td><h:messages showDetail="true" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="Name : " /></td>
+		    		<td><h:inputText value="#{WarZoneBean.tmpCountry.name}"/> </td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="Abbreviation : " /></td>
+		    		<td><h:inputText value="#{WarZoneBean.tmpCountry.abbreviation}"/> </td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="Description : " /></td>
+		    		<td><h:inputText value="#{WarZoneBean.tmpCountry.description}"/> </td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="Location : " /></td>
+		    		<td><h:inputText value="#{WarZoneBean.tmpCountry.location}"/> </td>
+				</tr>
+				<tr>
+					<td><h:commandButton rendered="true" action="#{WarZoneBean.addCountry}" value="Insert" /></td>
+					<td><h:commandButton rendered="true" action="#{WarZoneBean.backToCountries}" value="Back" immediate="true"/></td>
+				</tr>
+			</table>      	
     	</h:form>
     </ui:define>
 </ui:composition>
