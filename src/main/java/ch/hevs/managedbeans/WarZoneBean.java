@@ -146,7 +146,9 @@ public class WarZoneBean {
 	}
 	
 	
-	
+	public String backToCountries() {
+		return "countries?faces-redirect?true";
+	}
 	public String backToWarZone() {
 		this.setTmpWar(war.NewWar());
 		return "warzone?faces-redirect=true";
@@ -164,6 +166,10 @@ public class WarZoneBean {
 	}
 
 	public String editCar() {
+		if(tmpCar.getDescription() == "" || tmpCar.getName() == "" || tmpCar.getQuantity() == 0 || tmpCar.getWheels() == 0 || tmpCar.getStrength() == 0)
+		{
+			return "editCar?faces-redirect=true";
+		}
 		weapon.EditCar(tmpCar);
 		tmpCar = weapon.NewCar();
 		UpdateData();
@@ -171,6 +177,11 @@ public class WarZoneBean {
 	}
 
 	public String addCar() {
+		
+		if(tmpCar.getDescription() == "" || tmpCar.getName() == "" || tmpCar.getQuantity() == 0 || tmpCar.getWheels() == 0 || tmpCar.getStrength() == 0)
+		{
+			return "addCar?faces-redirect=true";
+		}
 		weapon.AddCar(tmpCar);
 		tmpCar = weapon.NewCar();
 		UpdateData();
